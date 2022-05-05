@@ -1,5 +1,6 @@
 # DisneylandPPE
 Projet Personnel Encadré blanc juin 2022
+*Par Lucas DA COSTA, Julien MORISSEAU et Mouhamed ZEBOUDJ*
 
 **Epreuve E5 : 13 juin 2022 Client léger**
 
@@ -9,7 +10,7 @@ Choisir un contexte professionnel :
 	- client (entreprise qui existe)
 	- presta (entreprise qui existe (moi))
 
-### Client : 
+### Client (DISNEYLAND PARIS) : 
 	- identité
 	- historique
 	- produits
@@ -19,7 +20,7 @@ Choisir un contexte professionnel :
 	- perspectives d'avenir
 	- etc.
 
-### Presta (3 à 5 pages) :
+### Presta (A2COM) (3 à 5 pages) :
 	- identité
 	- historique
 	- prestations
