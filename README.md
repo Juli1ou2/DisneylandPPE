@@ -9,7 +9,7 @@ Choisir un contexte professionnel :
 	- client (entreprise qui existe)
 	- presta (entreprise qui existe (moi))
 
-###Client : 
+### Client : 
 	- identité
 	- historique
 	- produits
@@ -19,13 +19,13 @@ Choisir un contexte professionnel :
 	- perspectives d'avenir
 	- etc.
 
-###Presta (3 à 5 pages) :
+### Presta (3 à 5 pages) :
 	- identité
 	- historique
 	- prestations
 	- chiffres
 
-##Cahier des charges du client léger :
+## Cahier des charges du client léger :
 	- objectifs
 	- périmètre d'études
 	- public cible
@@ -37,7 +37,7 @@ Choisir un contexte professionnel :
 
 **Site vitrine --> site dynamique avec une bdd**
 
-##Livrables :
+## Livrables :
 	Documentation technique (MCD, MLDR, Charte graphique, arborescence, DCU, UML, etc.)
 	Documentation user (copies d'écran)
 	Documentation incidents (problèmes rencontrés)
