@@ -3,7 +3,7 @@
 	require_once("controleur/config_bdd.php");
 
 	//instanciation du controleur
-	//$unControleur = new Controleur($serveur, $bdd, $user, $mdp);
+	$unControleur = new Controleur($serveur, $bdd, $user, $mdp);
 ?>
 
 <!DOCTYPE html>
