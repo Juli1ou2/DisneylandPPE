@@ -1,5 +1,5 @@
 <?php 
-	require_once("controleur/controleur.class.php");
+	require_once("controleur/controleur_disney.class.php");
 	require_once("controleur/config_bdd.php");
 
 	//instanciation du controleur

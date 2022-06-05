@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>Nombre d'attractions fonctionnelles</td>
-			<td><input type="text" name="nbAttractionsFonctionnelles " value="<?= ($leParc != null) ? $leParc['nbAttractionsFonctionnelles '] : ""?>"></td>
+			<td><input type="text" name="nbAttractionsFonctionnelles" value="<?= ($leParc != null) ? $leParc['nbAttractionsFonctionnelles'] : ""?>"></td>
 		</tr>
 		<tr>
 			<td></td>

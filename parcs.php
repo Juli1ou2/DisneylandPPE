@@ -10,7 +10,7 @@
 		}
 	}
 
-	require_once("vue/vue_insert_parc.php");
+	require_once("vues/vue_insert_parc.php");
 	if (isset($_POST['Valider'])){
 		$unControleur->insertParc($_POST);
 		header("Location: index.php?page=1");
@@ -20,5 +20,5 @@
 	}
 
 	$lesParcs = $unControleur->selectAllParcs();
-	require_once("vue/vue_les_parcs.php");
+	require_once("vues/vue_les_parcs.php");
 ?>
