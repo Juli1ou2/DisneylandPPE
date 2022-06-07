@@ -160,5 +160,34 @@
 			$this->unModele->updateTechnicien($tab);
 		}
 
+		/********************** ATTRACTIONS ***************************/
+
+		public function insertAttraction($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertAttraction($tab);
+		}
+
+		public function selectAllAttractions(){
+			$lesAttractions = $this->unModele->selectAllAttractions();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
+		}
+
+		public function deleteAttraction($idAttraction){
+			$this->unModele->deleteAttraction($idAttraction);
+		}
+
+		public function selectWhereAttraction($idAttraction){
+			return $this->unModele->selectWhereAttraction($idAttraction);
+		}
+
+		public function updateAttraction($tab){
+			$this->unModele->updateAttraction($tab);
+		}
 	}
 ?>

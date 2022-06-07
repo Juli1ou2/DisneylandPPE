@@ -387,5 +387,87 @@
 				$update->execute($donnees);
 			}
 		}
+
+		/****************************** ATTRACTIONS *******************************************/
+
+		public function insertAttraction($tab){
+			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien)";
+			$donnees = array(
+				":nom"=>$tab['nom'],
+				":status"=>$tab['status'],
+				":type"=>$tab['type'],
+				":capacite"=>$tab['capacite'],
+				":affluence"=>$tab['affluence'],
+				":prix"=>$tab['prix'],
+				":heureOuv"=>$tab['heureOuv'],
+				":heureFerm"=>$tab['heureFerm'],
+				":idParc"=>$tab['idParc'],
+				":idTechnicien"=>$tab['idTechnicien']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function selectAllAttractions(){
+			$requete = "select * from attraction";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function deleteAttraction($idAttraction){
+			$requete = "delete from attraction where idAttraction = :idAttraction;";
+			$donnees = array(
+				":idAttraction"=>$idAttraction);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
+		public function selectWhereAttraction($idAttraction){
+			$requete = "select * from attraction where idAttraction = :idAttraction;";
+			$donnees = array(
+				":idAttraction"=>$idAttraction);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Attraction
+				return $select->fetch();
+			} else {
+				return null;
+			}
+		}
+
+		public function updateAttraction($tab){
+			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, idTechnicien = :idTechnicien where idAttraction = :idAttraction";
+			$donnees = array(
+				":nom"=>$tab['nom'],
+				":status"=>$tab['status'],
+				":type"=>$tab['type'],
+				":capacite"=>$tab['capacite'],
+				":affluence"=>$tab['affluence'],
+				":prix"=>$tab['prix'],
+				":heureOuv"=>$tab['heureOuv'],
+				":heureFerm"=>$tab['heureFerm'],
+				":idParc"=>$tab['idParc'],
+				":idTechnicien"=>$tab['idTechnicien'],
+				":idAttraction"=>$tab['idAttraction']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$update = $this->pdo->prepare($requete);
+				$update->execute($donnees);
+			}
+		}
 	}
 ?>
