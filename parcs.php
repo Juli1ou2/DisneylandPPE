@@ -19,6 +19,12 @@
 		$unControleur->updateParc($_POST);
 	}
 
-	$lesParcs = $unControleur->selectAllParcs();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesParcs = $unControleur->searchParc($mot);
+	} else {
+		$lesParcs = $unControleur->selectAllParcs();
+	}
+
 	require_once("vues/vue_les_parcs.php");
 ?>

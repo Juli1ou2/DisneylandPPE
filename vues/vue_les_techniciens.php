@@ -1,16 +1,18 @@
 <h2>Liste des techniciens</h2>
-<table border="1">
-	<tr>
-		<td>ID Technicien</td>
-		<td>Nom</td>
-		<td>Prénom</td>
-		<td>Adresse</td>
-		<td>Mail</td>
-		<td>Téléphone</td>
-		<td>Qualification</td>
-		<td>Rôle</td>
-		<td>Opérations</td>
-	</tr>
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Technicien</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Adresse</th>
+			<th>Mail</th>
+			<th>Téléphone</th>
+			<th>Qualification</th>
+			<th>Rôle</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesTechniciens as $unTechnicien){
 			echo "<tr>
