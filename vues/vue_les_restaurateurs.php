@@ -20,8 +20,8 @@
 			<td>".$unRestaurateur['mail']."</td>
 			<td>".$unRestaurateur['tel']."</td>
 			<td>".$unRestaurateur['qualification']."</td>";
-			echo "<td><a href='index.php?page=1&action=edit&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/edit.png' height='35' width='35'></a>";
-			echo "<a href='index.php?page=1&action=sup&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
+			echo "<td><a href='index.php?page=5&action=edit&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/edit.png' height='35' width='35'></a>";
+			echo "<a href='index.php?page=5&action=sup&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 			echo "</tr>";
 		}
 	?>

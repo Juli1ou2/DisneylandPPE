@@ -150,7 +150,8 @@
 				":effectifMax"=>$tab['effectifMax'],
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
-				":capacite"=>$tab['capacite']
+				":capacite"=>$tab['capacite'],
+				":idRestaurant"=>$tab['idRestaurant']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -223,7 +224,82 @@
 				":adresse"=>$tab['adresse'],
 				":mail"=>$tab['mail'],
 				":tel"=>$tab['tel'],
-				":qualification"=>$tab['qualification']
+				":qualification"=>$tab['qualification'],
+				":idRestaurateur"=>$tab['idRestaurateur']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$update = $this->pdo->prepare($requete);
+				$update->execute($donnees);
+			}
+		}
+
+		/****************************** TRANSPORTS *******************************************/
+
+		public function insertTransport($tab){
+			$requete = "insert into transport values (null, :libelle, :type, :capacite, :affluence, :horaire, :prix)";
+			$donnees = array(
+				":libelle"=>$tab['libelle'],
+				":type"=>$tab['type'],
+				":capacite"=>$tab['capacite'],
+				":affluence"=>$tab['affluence'],
+				":horaire"=>$tab['horaire'],
+				":prix"=>$tab['prix']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function selectAllTransports(){
+			$requete = "select * from transport";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Transports
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function deleteTransport($idTransport){
+			$requete = "delete from transport where idTransport = :idTransport;";
+			$donnees = array(
+				":idTransport"=>$idTransport);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
+		public function selectWhereTransport($idTransport){
+			$requete = "select * from transport where idTransport = :idTransport;";
+			$donnees = array(
+				":idTransport"=>$idTransport);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Transport
+				return $select->fetch();
+			} else {
+				return null;
+			}
+		}
+
+		public function updateTransport($tab){
+			$requete = "update transport set libelle = :libelle, type = :type, capacite = :capacite, affluence = :affluence, horaire = :horaire, prix = :prix where idTransport = :idTransport";
+			$donnees = array(
+				":libelle"=>$tab['libelle'],
+				":type"=>$tab['type'],
+				":capacite"=>$tab['capacite'],
+				":affluence"=>$tab['affluence'],
+				":horaire"=>$tab['horaire'],
+				":prix"=>$tab['prix'],
+				":idTransport"=>$tab['idTransport']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
