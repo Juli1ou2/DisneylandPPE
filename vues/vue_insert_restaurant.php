@@ -25,7 +25,17 @@
 			<td>Capacité</td>
 			<td><input type="text" name="capacite" value="<?= ($leRestaurant != null) ? $leRestaurant['capacite'] : ""?>"></td>
 		</tr>
-		
+		<tr>
+			<td>Restaurateur</td>
+			<td><select name="idRestaurateur" value="<?php if($leRestaurant!=null) echo $leRestaurant['idRestaurateur'];?>">
+				<?php
+					foreach ($lesRestaurateurs as $unRestaurateur) {
+						echo "<option value='".$unRestaurateur['idRestaurateur']."'>";
+						echo $unRestaurateur['prenom']." ".$unRestaurateur['nom'];
+						echo "</option>";
+					}
+				?>
+			</select></td>
 		<tr>
 			<td></td>
 			<td><input type="reset" name="Annuler" value="Annuler">

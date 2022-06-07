@@ -89,14 +89,15 @@
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
-			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite)";
+			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, :idRestaurateur)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
 				":effectifMax"=>$tab['effectifMax'],
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
-				":capacite"=>$tab['capacite']
+				":capacite"=>$tab['capacite'],
+				":idRestaurateur"=>$tab['idRestaurateur']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -143,7 +144,7 @@
 		}
 
 		public function updateRestaurant($tab){
-			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type capacite = :capacite where idRestaurant = :idRestaurant";
+			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type, capacite = :capacite, idRestaurateur = :idRestaurateur where idRestaurant = :idRestaurant";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -151,6 +152,7 @@
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
 				":capacite"=>$tab['capacite'],
+				":idRestaurateur"=>$tab['idRestaurateur'],
 				":idRestaurant"=>$tab['idRestaurant']
 			);
 			if ($this->pdo != null){
