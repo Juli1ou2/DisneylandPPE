@@ -130,5 +130,35 @@
 			$this->unModele->updateTransport($tab);
 		}
 
+		/********************** TECHNICIENS ***************************/
+
+		public function insertTechnicien($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertTechnicien($tab);
+		}
+
+		public function selectAllTechniciens(){
+			$lesTechniciens = $this->unModele->selectAllTechniciens();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Techniciens
+			return $lesTechniciens;
+		}
+
+		public function deleteTechnicien($idTechnicien){
+			$this->unModele->deleteTechnicien($idTechnicien);
+		}
+
+		public function selectWhereTechnicien($idTechnicien){
+			return $this->unModele->selectWhereTechnicien($idTechnicien);
+		}
+
+		public function updateTechnicien($tab){
+			$this->unModele->updateTechnicien($tab);
+		}
+
 	}
 ?>

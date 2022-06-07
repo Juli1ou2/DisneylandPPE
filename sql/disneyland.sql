@@ -11,7 +11,7 @@ CREATE TABLE technicien(
    tel VARCHAR(50),
    qualification VARCHAR(50),
    mdp VARCHAR(50),
-   role VARCHAR(50),
+   role enum("admin","user"),
    PRIMARY KEY(idTechnicien)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE client(
    email VARCHAR(50),
    mdp VARCHAR(50),
    tel VARCHAR(50),
-   role VARCHAR(50),
+   role enum("admin","user"),
    PRIMARY KEY(idClient)
 );
 
