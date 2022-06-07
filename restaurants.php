@@ -1,5 +1,6 @@
 <?php
 	$leRestaurant = null;
+	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
 
 	if (isset($_GET['action']) and isset($_GET['idRestaurant'])){
 		$action = $_GET['action'];
