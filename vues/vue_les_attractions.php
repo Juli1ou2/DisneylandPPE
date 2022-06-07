@@ -1,19 +1,21 @@
 <h2>Liste des attractions</h2>
-<table border="1">
-	<tr>
-		<td>ID Attraction</td>
-		<td>Nom</td>
-		<td>Statut</td>
-		<td>Type</td>
-		<td>Capacité</td>
-		<td>Affluence</td>
-		<td>Prix</td>
-		<td>Heure d'ouverture</td>
-		<td>Heure de fermeture</td>
-		<td>Parc</td>
-		<td>Technicien</td>
-		<td>Opérations</td>
-	</tr>
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Attraction</th>
+			<th>Nom</th>
+			<th>Statut</th>
+			<th>Type</th>
+			<th>Capacité</th>
+			<th>Affluence</th>
+			<th>Prix</th>
+			<th>Heure d'ouverture</th>
+			<th>Heure de fermeture</th>
+			<th>Parc</th>
+			<th>Technicien</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesAttractions as $unAttraction){
 			echo "<tr>

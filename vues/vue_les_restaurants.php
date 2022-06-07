@@ -1,16 +1,18 @@
 <h2>Liste des restaurants</h2>
-<table border="1">
-	<tr>
-		<td>ID Restaurant</td>
-		<td>Nom</td>
-		<td>Thème</td>
-		<td>Effectif maximum</td>
-		<td>Affluence</td>
-		<td>Type</td>
-		<td>Capacité</td>
-		<td>Restaurateur</td>
-		<td>Opérations</td>
-	</tr>
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Restaurant</th>
+			<th>Nom</th>
+			<th>Thème</th>
+			<th>Effectif maximum</th>
+			<th>Affluence</th>
+			<th>Type</th>
+			<th>Capacité</th>
+			<th>Restaurateur</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesRestaurants as $unRestaurant){
 			echo "<tr>

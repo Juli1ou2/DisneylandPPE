@@ -1,15 +1,17 @@
 <h2>Liste des transports</h2>
-<table border="1">
-	<tr>
-		<td>ID Transport</td>
-		<td>Libellé</td>
-		<td>Type</td>
-		<td>Capacité</td>
-		<td>Affluence</td>
-		<td>Horaire</td>
-		<td>Prix</td>
-		<td>Opérations</td>
-	</tr>
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Transport</th>
+			<th>Libellé</th>
+			<th>Type</th>
+			<th>Capacité</th>
+			<th>Affluence</th>
+			<th>Horaire</th>
+			<th>Prix</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesTransports as $unTransport){
 			echo "<tr>

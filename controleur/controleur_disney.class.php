@@ -40,6 +40,14 @@
 			$this->unModele->updateParc($tab);
 		}
 
+		public function searchParc($mot){
+			$lesParcs =  $this->unModele->searchParc($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Parcs
+			return $lesParcs;
+		}
+
 		/********************** RESTAURANTS ***************************/
 
 		public function insertRestaurant($tab){

@@ -1,13 +1,23 @@
 <h2>Liste des parcs</h2>
-<table border="1">
-	<tr>
-		<td>ID Parc</td>
-		<td>Nom</td>
-		<td>Capacité</td>
-		<td>Nombre total d'attractions</td>
-		<td>Nombre d'attractions fonctionnelles</td>
-		<td>Opérations</td>
-	</tr>
+
+<form method="post" action="">
+	Rechercher :
+	<input type="text" name="mot">
+	<input type="submit" name="Rechercher" value="Rechercher">
+</form>
+<br/>
+
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Parc</th>
+			<th>Nom</th>
+			<th>Capacité</th>
+			<th>Nombre total d'attractions</th>
+			<th>Nombre d'attractions fonctionnelles</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesParcs as $unParc){
 			echo "<tr>

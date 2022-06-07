@@ -1,15 +1,17 @@
 <h2>Liste des restaurateurs</h2>
-<table border="1">
-	<tr>
-		<td>ID Restaurateur</td>
-		<td>Nom</td>
-		<td>Prénom</td>
-		<td>Adresse</td>
-		<td>Email</td>
-		<td>Téléphone</td>
-		<td>Qualification</td>
-		<td>Opérations</td>
-	</tr>
+<table id="table_affichage">
+	<thead>
+		<tr>
+			<th>ID Restaurateur</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Adresse</th>
+			<th>Email</th>
+			<th>Téléphone</th>
+			<th>Qualification</th>
+			<th>Opérations</th>
+		</tr>
+	</thead>
 	<?php 
 		foreach ($lesRestaurateurs as $unRestaurateur){
 			echo "<tr>

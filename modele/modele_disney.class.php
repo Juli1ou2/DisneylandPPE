@@ -86,6 +86,18 @@
 			}
 		}
 
+		public function searchParc($mot){
+			$requete = "select * from parc where nom like'%".$mot."%' or capacite like '%".$mot."%' or nbAttractionsTotales like '%".$mot."%' or nbAttractionsFonctionnelles like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Parcs
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
