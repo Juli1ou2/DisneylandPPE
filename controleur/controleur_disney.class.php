@@ -48,6 +48,14 @@
 			return $lesParcs;
 		}
 
+		public function countParcs(){
+			$nbParcs =  $this->unModele->countParcs();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Parcs
+			return $nbParcs;
+		}
+
 		/********************** RESTAURANTS ***************************/
 
 		public function insertRestaurant($tab){
@@ -84,6 +92,14 @@
 
 			//on renvoie les Restaurants
 			return $lesRestaurants;
+		}
+
+		public function countRestaurants(){
+			$nbRestaurants =  $this->unModele->countRestaurants();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurants
+			return $nbRestaurants;
 		}
 
 		/********************** RESTAURATEURS ***************************/
@@ -124,6 +140,14 @@
 			return $lesRestaurateurs;
 		}
 
+		public function countRestaurateurs(){
+			$nbRestaurateurs =  $this->unModele->countRestaurateurs();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurateurs
+			return $nbRestaurateurs;
+		}
+
 		/********************** TRANSPORTS ***************************/
 
 		public function insertTransport($tab){
@@ -160,6 +184,14 @@
 
 			//on renvoie les Transports
 			return $lesTransports;
+		}
+
+		public function countTransports(){
+			$nbTransports =  $this->unModele->countTransports();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Transports
+			return $nbTransports;
 		}
 
 		/********************** TECHNICIENS ***************************/
@@ -200,6 +232,14 @@
 			return $lesTechniciens;
 		}
 
+		public function countTechniciens(){
+			$nbTechniciens =  $this->unModele->countTechniciens();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Techniciens
+			return $nbTechniciens;
+		}
+
 		/********************** ATTRACTIONS ***************************/
 
 		public function insertAttraction($tab){
@@ -236,6 +276,21 @@
 
 			//on renvoie les Attractions
 			return $lesAttractions;
+		}
+
+		public function countAttractions(){
+			$nbAttractions =  $this->unModele->countAttractions();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $nbAttractions;
+		}
+
+		/********************** USERS ***************************/
+
+		public function selectUser($email, $mdp){
+			//appel au modèle pour l'insertion
+			return $this->unModele->selectUser($email, $mdp);
 		}
 	}
 ?>

@@ -98,6 +98,19 @@
 			}
 		}
 
+		public function countParcs(){
+			$requete = "select count(*) as nb from parc;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Parc
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
@@ -181,6 +194,19 @@
 				$select->execute();
 				//extraction des Restaurants
 				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countRestaurants(){
+			$requete = "select count(*) as nb from restaurant;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Restaurant
+				$nb = $select->fetch();
+				return $nb['nb'];
 			} else {
 				return null;
 			}
@@ -272,6 +298,19 @@
 			}
 		}
 
+		public function countRestaurateurs(){
+			$requete = "select count(*) as nb from restaurateur;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Restaurateur
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** TRANSPORTS *******************************************/
 
 		public function insertTransport($tab){
@@ -353,6 +392,19 @@
 				$select->execute();
 				//extraction des Transports
 				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countTransports(){
+			$requete = "select count(*) as nb from transport;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Transport
+				$nb = $select->fetch();
+				return $nb['nb'];
 			} else {
 				return null;
 			}
@@ -448,6 +500,19 @@
 			}
 		}
 
+		public function countTechniciens(){
+			$requete = "select count(*) as nb from technicien;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Technicien
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** ATTRACTIONS *******************************************/
 
 		public function insertAttraction($tab){
@@ -537,6 +602,40 @@
 				$select->execute();
 				//extraction des Attractions
 				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countAttractions(){
+			$requete = "select count(*) as nb from attraction;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Attraction
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
+		/****************************** USERS *******************************************/
+
+		public function selectUser($email, $mdp){
+			$requete_client = "select * from client where email ='".$email."' and mdp ='".$mdp."'; " ;
+			$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete_client);
+				$select->execute();
+				//extraction du user
+				if($select->fetch() != null){
+					return $select->fetch();
+				} else{
+					$select = $this->pdo->prepare($requete_technicien);
+					$select->execute();
+					return $select->fetch();
+				}
 			} else {
 				return null;
 			}

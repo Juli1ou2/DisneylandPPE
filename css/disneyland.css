@@ -95,12 +95,11 @@ header h1{
 #menu{
 	display: flex;
 	justify-content: space-between;
-	flex: 1;
+	align-items: center;
 }
 
 #menu:hover a{
 	border-bottom: 4px solid transparent;
-	color: red;
 }
 
 #menu a{

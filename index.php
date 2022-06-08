@@ -2,6 +2,9 @@
 	require_once("controleur/controleur_disney.class.php");
 	require_once("controleur/config_bdd.php");
 
+	//lancement de la session
+	session_start();
+
 	//instanciation du controleur
 	$unControleur = new Controleur($serveur, $bdd, $user, $mdp);
 ?>
@@ -33,6 +36,11 @@
 					<a href="index.php?page=5"><h3>RESTAURATEURS</h3></a>
 					<a href="index.php?page=6"><h3>TRANSPORTS</h3></a>
 					<a href="index.php?page=7"><h3>COMMANDES</h3></a>
+					<?php if (! isset($_SESSION['email'])){
+						echo '<a href="index.php?page=8"><h3>Connexion</h3></a>';
+					} else{
+						echo '<a href="index.php?page=8"><h3>Déconnexion</h3></a>';
+					} ?>
 				</div>
 			</div>
 		</header>
@@ -44,6 +52,7 @@
 				$page = 0;
 			}
 			switch($page){
+				case 0 : require_once("home.php"); break;
 				case 1 : require_once("parcs.php"); break;
 				case 2 : require_once("attractions.php"); break;
 				case 3 : require_once("techniciens.php"); break;
@@ -51,6 +60,31 @@
 				case 5 : require_once("restaurateurs.php"); break;
 				case 6 : require_once("transports.php"); break;
 				case 7 : require_once("commandes.php"); break;
+				case 8 :
+				if (! isset($_SESSION['email'])){
+					require_once("vues/vue_connexion.php"); break;
+				} else{
+					session_destroy();
+					header("Location: index.php?page=8");
+				}
+			}
+
+			if (isset($_POST['SeConnecter'])){
+				$email = $_POST['email'];
+				$mdp = $_POST['mdp'];
+				$unUser = $unControleur->selectUser($email, $mdp);
+				if($unUser == null){
+					echo "<br/>Veuillez vérifier vos identifiants !";
+				} else{
+					echo "Bienvenue ".$unUser['prenom']." ".$unUser['nom']." !";
+					//Création de la session user
+					$_SESSION['email'] = $unUser['email'];
+					$_SESSION['nom'] = $unUser['nom'];
+					$_SESSION['prenom'] = $unUser['prenom'];
+					$_SESSION['role'] = $unUser['role'];
+					//on recharge la page vers le HOME
+					header("Location: index.php?page=0");
+				}
 			}
 		?>
 	</center>
