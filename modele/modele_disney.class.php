@@ -98,6 +98,19 @@
 			}
 		}
 
+		public function countParcs(){
+			$requete = "select count(*) as nb from parc;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Parc
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
@@ -171,6 +184,31 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchRestaurant($mot){
+			$requete = "select * from restaurant where nom like'%".$mot."%' or theme like '%".$mot."%' or effectifMax like '%".$mot."%' or affluence like '%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Restaurants
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countRestaurants(){
+			$requete = "select count(*) as nb from restaurant;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Restaurant
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
 			}
 		}
 
@@ -248,6 +286,31 @@
 			}
 		}
 
+		public function searchRestaurateur($mot){
+			$requete = "select * from restaurateur where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or mail like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Restaurateurs
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countRestaurateurs(){
+			$requete = "select count(*) as nb from restaurateur;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Restaurateur
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** TRANSPORTS *******************************************/
 
 		public function insertTransport($tab){
@@ -319,6 +382,31 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchTransport($mot){
+			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or horaire like '%".$mot."%' or prix like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Transports
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countTransports(){
+			$requete = "select count(*) as nb from transport;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Transport
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
 			}
 		}
 
@@ -397,6 +485,31 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchTechnicien($mot){
+			$requete = "select * from technicien where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or role like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Techniciens
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countTechniciens(){
+			$requete = "select count(*) as nb from technicien;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Technicien
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
 			}
 		}
 
@@ -479,6 +592,52 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchAttraction($mot){
+			$requete = "select * from attraction where nom like'%".$mot."%' or status like '%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or prix like '%".$mot."%' or heureOuv like '%".$mot."%' or heureFerm like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function countAttractions(){
+			$requete = "select count(*) as nb from attraction;";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction du Attraction
+				$nb = $select->fetch();
+				return $nb['nb'];
+			} else {
+				return null;
+			}
+		}
+
+		/****************************** USERS *******************************************/
+
+		public function selectUser($email, $mdp){
+			$requete_client = "select * from client where email ='".$email."' and mdp ='".$mdp."'; " ;
+			$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete_client);
+				$select->execute();
+				//extraction du user
+				if($select->fetch() != null){
+					return $select->fetch();
+				} else{
+					$select = $this->pdo->prepare($requete_technicien);
+					$select->execute();
+					return $select->fetch();
+				}
+			} else {
+				return null;
 			}
 		}
 	}

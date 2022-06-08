@@ -19,6 +19,12 @@
 		$unControleur->updateTechnicien($_POST);
 	}
 
-	$lesTechniciens = $unControleur->selectAllTechniciens();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesTechniciens = $unControleur->searchTechnicien($mot);
+	} else {
+		$lesTechniciens = $unControleur->selectAllTechniciens();
+	}
+	
 	require_once("vues/vue_les_techniciens.php");
 ?>

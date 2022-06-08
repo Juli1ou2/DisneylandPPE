@@ -19,6 +19,12 @@
 		$unControleur->updateTransport($_POST);
 	}
 
-	$lesTransports = $unControleur->selectAllTransports();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesTransports = $unControleur->searchTransport($mot);
+	} else {
+		$lesTransports = $unControleur->selectAllTransports();
+	}
+	
 	require_once("vues/vue_les_transports.php");
 ?>

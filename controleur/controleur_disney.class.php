@@ -48,6 +48,14 @@
 			return $lesParcs;
 		}
 
+		public function countParcs(){
+			$nbParcs =  $this->unModele->countParcs();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Parcs
+			return $nbParcs;
+		}
+
 		/********************** RESTAURANTS ***************************/
 
 		public function insertRestaurant($tab){
@@ -76,6 +84,22 @@
 
 		public function updateRestaurant($tab){
 			$this->unModele->updateRestaurant($tab);
+		}
+
+		public function searchRestaurant($mot){
+			$lesRestaurants =  $this->unModele->searchRestaurant($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurants
+			return $lesRestaurants;
+		}
+
+		public function countRestaurants(){
+			$nbRestaurants =  $this->unModele->countRestaurants();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurants
+			return $nbRestaurants;
 		}
 
 		/********************** RESTAURATEURS ***************************/
@@ -108,6 +132,22 @@
 			$this->unModele->updateRestaurateur($tab);
 		}
 
+		public function searchRestaurateur($mot){
+			$lesRestaurateurs =  $this->unModele->searchRestaurateur($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurateurs
+			return $lesRestaurateurs;
+		}
+
+		public function countRestaurateurs(){
+			$nbRestaurateurs =  $this->unModele->countRestaurateurs();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurateurs
+			return $nbRestaurateurs;
+		}
+
 		/********************** TRANSPORTS ***************************/
 
 		public function insertTransport($tab){
@@ -136,6 +176,22 @@
 
 		public function updateTransport($tab){
 			$this->unModele->updateTransport($tab);
+		}
+
+		public function searchTransport($mot){
+			$lesTransports =  $this->unModele->searchTransport($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Transports
+			return $lesTransports;
+		}
+
+		public function countTransports(){
+			$nbTransports =  $this->unModele->countTransports();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Transports
+			return $nbTransports;
 		}
 
 		/********************** TECHNICIENS ***************************/
@@ -168,6 +224,22 @@
 			$this->unModele->updateTechnicien($tab);
 		}
 
+		public function searchTechnicien($mot){
+			$lesTechniciens =  $this->unModele->searchTechnicien($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Techniciens
+			return $lesTechniciens;
+		}
+
+		public function countTechniciens(){
+			$nbTechniciens =  $this->unModele->countTechniciens();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Techniciens
+			return $nbTechniciens;
+		}
+
 		/********************** ATTRACTIONS ***************************/
 
 		public function insertAttraction($tab){
@@ -196,6 +268,29 @@
 
 		public function updateAttraction($tab){
 			$this->unModele->updateAttraction($tab);
+		}
+
+		public function searchAttraction($mot){
+			$lesAttractions =  $this->unModele->searchAttraction($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
+		}
+
+		public function countAttractions(){
+			$nbAttractions =  $this->unModele->countAttractions();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $nbAttractions;
+		}
+
+		/********************** USERS ***************************/
+
+		public function selectUser($email, $mdp){
+			//appel au modèle pour l'insertion
+			return $this->unModele->selectUser($email, $mdp);
 		}
 	}
 ?>

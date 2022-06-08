@@ -19,6 +19,12 @@
 		$unControleur->updateRestaurateur($_POST);
 	}
 
-	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesRestaurateurs = $unControleur->searchRestaurateur($mot);
+	} else{
+		$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
+	}
+
 	require_once("vues/vue_les_restaurateurs.php");
 ?>
