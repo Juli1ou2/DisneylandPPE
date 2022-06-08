@@ -174,6 +174,18 @@
 			}
 		}
 
+		public function searchRestaurant($mot){
+			$requete = "select * from restaurant where nom like'%".$mot."%' or theme like '%".$mot."%' or effectifMax like '%".$mot."%' or affluence like '%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Restaurants
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
@@ -248,6 +260,18 @@
 			}
 		}
 
+		public function searchRestaurateur($mot){
+			$requete = "select * from restaurateur where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or mail like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Restaurateurs
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** TRANSPORTS *******************************************/
 
 		public function insertTransport($tab){
@@ -319,6 +343,18 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchTransport($mot){
+			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or horaire like '%".$mot."%' or prix like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Transports
+				return $select->fetchAll();
+			} else {
+				return null;
 			}
 		}
 
@@ -397,6 +433,18 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchTechnicien($mot){
+			$requete = "select * from technicien where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or role like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Techniciens
+				return $select->fetchAll();
+			} else {
+				return null;
 			}
 		}
 
@@ -479,6 +527,18 @@
 				//on prépare la requête
 				$update = $this->pdo->prepare($requete);
 				$update->execute($donnees);
+			}
+		}
+
+		public function searchAttraction($mot){
+			$requete = "select * from attraction where nom like'%".$mot."%' or status like '%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or prix like '%".$mot."%' or heureOuv like '%".$mot."%' or heureFerm like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
 			}
 		}
 	}

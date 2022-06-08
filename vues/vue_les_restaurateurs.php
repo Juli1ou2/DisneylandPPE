@@ -1,4 +1,12 @@
 <h2>Liste des restaurateurs</h2>
+
+<form method="post" action="">
+	Rechercher :
+	<input type="text" name="mot">
+	<input type="submit" name="Rechercher" value="Rechercher">
+</form>
+<br/>
+
 <table id="table_affichage">
 	<thead>
 		<tr>

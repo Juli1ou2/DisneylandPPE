@@ -78,6 +78,14 @@
 			$this->unModele->updateRestaurant($tab);
 		}
 
+		public function searchRestaurant($mot){
+			$lesRestaurants =  $this->unModele->searchRestaurant($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurants
+			return $lesRestaurants;
+		}
+
 		/********************** RESTAURATEURS ***************************/
 
 		public function insertRestaurateur($tab){
@@ -106,6 +114,14 @@
 
 		public function updateRestaurateur($tab){
 			$this->unModele->updateRestaurateur($tab);
+		}
+
+		public function searchRestaurateur($mot){
+			$lesRestaurateurs =  $this->unModele->searchRestaurateur($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Restaurateurs
+			return $lesRestaurateurs;
 		}
 
 		/********************** TRANSPORTS ***************************/
@@ -138,6 +154,14 @@
 			$this->unModele->updateTransport($tab);
 		}
 
+		public function searchTransport($mot){
+			$lesTransports =  $this->unModele->searchTransport($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Transports
+			return $lesTransports;
+		}
+
 		/********************** TECHNICIENS ***************************/
 
 		public function insertTechnicien($tab){
@@ -168,6 +192,14 @@
 			$this->unModele->updateTechnicien($tab);
 		}
 
+		public function searchTechnicien($mot){
+			$lesTechniciens =  $this->unModele->searchTechnicien($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Techniciens
+			return $lesTechniciens;
+		}
+
 		/********************** ATTRACTIONS ***************************/
 
 		public function insertAttraction($tab){
@@ -196,6 +228,14 @@
 
 		public function updateAttraction($tab){
 			$this->unModele->updateAttraction($tab);
+		}
+
+		public function searchAttraction($mot){
+			$lesAttractions =  $this->unModele->searchAttraction($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
 		}
 	}
 ?>

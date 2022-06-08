@@ -20,6 +20,12 @@
 		$unControleur->updateRestaurant($_POST);
 	}
 
-	$lesRestaurants = $unControleur->selectAllRestaurants();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesRestaurants = $unControleur->searchRestaurant($mot);
+	} else {
+		$lesRestaurants = $unControleur->selectAllRestaurants();
+	}
+	
 	require_once("vues/vue_les_restaurants.php");
 ?>

@@ -42,7 +42,7 @@ body{
 }
 
 #table_affichage th{
-	background-color: #3D21DD63;
+	background-color: #0142deff;
 	color:  white;
 	text-align: left;
 	padding: 15px 15px;
@@ -69,18 +69,27 @@ header {
 	color: black;
 	margin-bottom: 30px;
 	padding: 20px;
-	font-family: Aileron-Bold-webfont;
+	font-family: Aileron-Regular-webfont;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 header h1{
-	flex: 2;
+	font-size: large;
+	color: #213f8eff;
 }
 
 #en-tete{
 	width: 75%;
+}
+
+#titre_menu{
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
 }
 
 #menu{
@@ -89,28 +98,29 @@ header h1{
 	flex: 1;
 }
 
-header a{
+#menu:hover a{
 	border-bottom: 4px solid transparent;
+	color: red;
+}
+
+#menu a{
+	font-size: small;
+	border-bottom: 4px solid transparent;
+	border-radius: 75px / 25px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: black;
+	text-decoration: none;
+}
+
+#menu a:hover{
+	border-bottom: 4px solid #025bffff;
+	border-radius: 75px / 25px;
+}
+
+#menu a:visited{
 	color: black;
 }
-
-header a:hover{
-	border-bottom: 4px solid #ff1b27;
-}
-
-header a:visited{
-	color: black;
-}
-
-h3{
-	font-size: x-large;
-}
-
-h4{
-	font-size: large;
-}
-
-
 
 footer {
 	background-color: #ff1b27;

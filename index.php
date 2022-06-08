@@ -19,18 +19,20 @@
 	<center>
 		<header>
 			<div id="en-tete">
-				<h1>Programmation de Parcours<br>DISNEYLAND PARIS</h1>
-
+				<div id="titre_menu">
+					<a href="index.php?page=0"><img src="images/logo.png" width="215" height="61"></a>
+					<h1>PROGRAMMATION DE PARCOURS</h1>
+				</div>
 				<div id="menu">
 					<!--<a href="index.php?page=0"><img src="images/home.png" height="90" width="90"></a>-->
-					<a href="index.php?page=0"><h3>Accueil</h3></a>
-					<a href="index.php?page=1"><h3>Parcs</h3></a>
-					<a href="index.php?page=2"><h3>Attractions</h3></a>
-					<a href="index.php?page=3"><h3>Techniciens</h3></a>
-					<a href="index.php?page=4"><h3>Restaurants</h3></a>
-					<a href="index.php?page=5"><h3>Restaurateurs</h3></a>
-					<a href="index.php?page=6"><h3>Transports</h3></a>
-					<a href="index.php?page=7"><h3>Commandes</h3></a>
+					<a href="index.php?page=0"><h3>ACCUEIL</h3></a>
+					<a href="index.php?page=1"><h3>PARCS</h3></a>
+					<a href="index.php?page=2"><h3>ATTRACTIONS</h3></a>
+					<a href="index.php?page=3"><h3>TECHNICIENS</h3></a>
+					<a href="index.php?page=4"><h3>RESTAURANTS</h3></a>
+					<a href="index.php?page=5"><h3>RESTAURATEURS</h3></a>
+					<a href="index.php?page=6"><h3>TRANSPORTS</h3></a>
+					<a href="index.php?page=7"><h3>COMMANDES</h3></a>
 				</div>
 			</div>
 		</header>

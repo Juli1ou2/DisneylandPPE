@@ -21,6 +21,12 @@
 		$unControleur->updateAttraction($_POST);
 	}
 
-	$lesAttractions = $unControleur->selectAllAttractions();
+	if (isset($_POST['Rechercher'])){
+		$mot = $_POST['mot'];
+		$lesAttractions = $unControleur->searchAttraction($mot);
+	} else{
+		$lesAttractions = $unControleur->selectAllAttractions();
+	}
+
 	require_once("vues/vue_les_attractions.php");
 ?>
