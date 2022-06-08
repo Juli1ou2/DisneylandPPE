@@ -626,15 +626,16 @@
 			$requete_client = "select * from client where email ='".$email."' and mdp ='".$mdp."'; " ;
 			$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
 			if ($this->pdo != null){
-				$select = $this->pdo->prepare($requete_client);
-				$select->execute();
+				$select_client = $this->pdo->prepare($requete_client);
+				$select_client->execute();
+				$select_technicien = $this->pdo->prepare($requete_technicien);
+				$select_technicien->execute();
 				//extraction du user
-				if($select->fetch() != null){
-					return $select->fetch();
-				} else{
-					$select = $this->pdo->prepare($requete_technicien);
-					$select->execute();
-					return $select->fetch();
+				if($select_client != null){
+					return $select_client->fetch();
+				} 
+				else{
+					return $select_technicien->fetch();
 				}
 			} else {
 				return null;
