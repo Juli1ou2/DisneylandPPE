@@ -20,7 +20,7 @@
 				<td><input type="text" name="affluence" value="<?= ($leTransport != null) ? $leTransport['affluence'] : ""?>"></td>
 			</tr>
 			<tr>
-				<td>Horaire</td>
+				<td>Horaire (fréquence)</td>
 				<td><input type="time" name="horaire" value="<?= ($leTransport != null) ? $leTransport['horaire'] : ""?>"></td>
 			</tr>
 			<tr>

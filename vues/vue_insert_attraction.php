@@ -9,11 +9,22 @@
 			</tr>
 			<tr>
 				<td>Statut</td>
-				<td><input type="text" name="status" value="<?= ($leAttraction != null) ? $leAttraction['status'] : ""?>"></td>
+				<td><select name="status">
+					<option value="Ouverte">Ouverte</option>
+					<option value="Fermée">Fermée</option>
+					<option value="En Travaux">En Travaux</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Type</td>
-				<td><input type="text" name="type" value="<?= ($leAttraction != null) ? $leAttraction['type'] : ""?>"></td>
+				<td><select name="type">
+					<option value="Spectacle">Spectacle</option>
+					<option value="Montagne Russe">Montagne Russe</option>
+					<option value="Manège">Manège</option>
+					<option value="Dark Ride">Dark Ride</option>
+					<option value="Simulateur de vol">Simulateur de vol</option>
+					<option value="Chute dans le vide">Chute dans le vide</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Capacité</td>
@@ -21,15 +32,20 @@
 			</tr>
 			<tr>
 				<td>Affluence</td>
-				<td><input type="text" name="affluence" value="<?= ($leAttraction != null) ? $leAttraction['affluence'] : ""?>"></td>
-			</tr>
-			<!-- <tr>
-				<td>Rôle</td>
-				<td><select name="role">
-					<option value="admin">Administrateur</option>
-					<option value="user">Utilisateur</option>
+				<td><select name="affluence">
+					<option value="Vide">Vide</option>
+					<option value="10%">10%</option>
+					<option value="20%">20%</option>
+					<option value="30%">30%</option>
+					<option value="40%">40%</option>
+					<option value="50%">50%</option>
+					<option value="60%">60%</option>
+					<option value="70%">70%</option>
+					<option value="80%">80%</option>
+					<option value="90%">90%</option>
+					<option value="Pleine">Pleine</option>
 				</select></td>
-			</tr> -->
+			</tr>
 			<tr>
 				<td>Prix</td>
 				<td><input type="text" name="prix" value="<?= ($leAttraction != null) ? $leAttraction['prix'] : ""?>"></td>
