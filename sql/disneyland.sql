@@ -11,7 +11,6 @@ CREATE TABLE technicien(
    tel VARCHAR(50),
    qualification VARCHAR(50),
    mdp VARCHAR(50),
-   role enum("admin","user"),
    PRIMARY KEY(idTechnicien)
 );
 
@@ -53,17 +52,16 @@ CREATE TABLE client(
    email VARCHAR(50),
    mdp VARCHAR(50),
    tel VARCHAR(50),
-   role enum("admin","user"),
    PRIMARY KEY(idClient)
 );
 
 CREATE TABLE attraction(
    idAttraction int(3) not null auto_increment,
    nom VARCHAR(50) NOT NULL,
-   status VARCHAR(50),
-   type VARCHAR(50),
+   status enum ("Ouverte", "Fermée", "En Travaux"),
+   type enum ("Spectacle", "Montagne Russe", "Manège", "Dark Ride", "Simulateur de vol" ),
    capacite int(5),
-   affluence VARCHAR(50),
+   affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    prix int(5),
    heureOuv TIME,
    heureFerm TIME,
@@ -79,7 +77,7 @@ CREATE TABLE restaurant(
    nom VARCHAR(50),
    theme VARCHAR(50),
    effectifMax int(5),
-   affluence VARCHAR(50),
+   affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    type VARCHAR(50),
    capacite int(5),
    idRestaurateur int(3) NOT NULL,
@@ -109,3 +107,45 @@ CREATE TABLE Reserver1(
    FOREIGN KEY(idAttraction) REFERENCES attraction(idAttraction),
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
+
+
+-- 
+insert into parc values (null, "Parc Disneyland", 28000, 34, 14);
+
+insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
+
+insert into technicien values (null, "Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "0606060606", "Ingénieur son", "te", "admin");
+
+insert into technicien values (null, "te", "te", "te", "te", "te", "te", "te", "admin");
+
+insert into technicien values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mz@gmail.com", "0607070707", "technicien plateau", "te", "admin");
+
+insert into technicien values ( null, "Da Costa", "Lucas", "9 rue du repas", "ld@gmail.com", "0707070707", "Technicien lumiere", "te", "admin");
+
+
+insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", 1, 1);
+
+insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe", 1800, "40%", 20, "09:00", "19:00", 1, 3);
+
+insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride", 2400, "70%", 15, "09:00", "19:00", 1, 2);
+
+insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 1);
+
+insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermé", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+
+insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+
+
+
+
+
+
+insert into restaurateur values ( null, "Da Costa", "Lucas", "9 rue du repas", "ldacosta7797@gmail.com", "0707070707", "Chef cuisinier");
+
+insert into restaurateur values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "0607070707", "Comis de cuisine" ) ;
+
+insert into restaurateur values ((null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Comis de cuisine" ) ;)
+
+
+
+insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service a table", 200, 1 );

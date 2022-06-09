@@ -73,20 +73,37 @@
 				$email = $_POST['email'];
 				$mdp = $_POST['mdp'];
 				$unUser = $unControleur->selectUser($email, $mdp);
+				// var_dump($unUser);
 				if($unUser == null){
-					echo "<br/>Veuillez vérifier vos identifiants !";
-				} else{
-					echo "Bienvenue ".$unUser['prenom']." ".$unUser['nom']." !";
+					echo "<p><br><br>VEUILLEZ VERIFIER VOS IDENTIFIANTS !</p>";
+				} else {
+
+					if (isset($unUser['qualification'])){
+						$_SESSION['type'] = "Technicien";
+					}else {
+						$_SESSION['type'] = "Client";
+					}
 					//Création de la session user
 					$_SESSION['email'] = $unUser['email'];
 					$_SESSION['nom'] = $unUser['nom'];
 					$_SESSION['prenom'] = $unUser['prenom'];
-					$_SESSION['role'] = $unUser['role'];
+					//$_SESSION['role'] = $unUser['role'];
 					//on recharge la page vers le HOME
 					header("Location: index.php?page=0");
+
 				}
 			}
+			if (isset($_POST['SInscrire'])){
+				$unControleur->insertClient($_POST);
+				header("Location: index.php?page=8");
+			}
 		?>
+
+		<br><br><br><br>
+		<footer>
+			<h3>Contact :</h3>
+			<p><a href="mailto:sav@disneyland.fr">sav@disneyland.fr</a> | <a href="tel:+33825300500" title="Service 0,15 €/min + prix appel">0 825 300 500</a></p>
+		</footer>
 	</center>
 </body>
 </html>
