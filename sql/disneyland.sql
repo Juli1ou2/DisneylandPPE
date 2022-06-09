@@ -135,6 +135,8 @@ insert into attraction values(null, "Indiana Jones et le temple du peril", "Ferm
 
 insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
+insert into attraction values (null, "")
+
 
 
 
@@ -144,8 +146,29 @@ insert into restaurateur values ( null, "Da Costa", "Lucas", "9 rue du repas", "
 
 insert into restaurateur values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "0607070707", "Comis de cuisine" ) ;
 
-insert into restaurateur values ((null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Comis de cuisine" ) ;)
+insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Comis de cuisine" ) ;
 
 
 
 insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service a table", 200, 1 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
