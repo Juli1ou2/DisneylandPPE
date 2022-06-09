@@ -620,25 +620,42 @@
 			}
 		}
 
+		/****************************** CLIENTS *******************************************/
+
+		public function insertClient($tab){
+			$requete = "insert into client values (null, :nom, :prenom, :email, :tel, :mdp)";
+			$donnees = array(
+				":nom"=>$tab['nom'],
+				":prenom"=>$tab['prenom'],
+				":email"=>$tab['email'],
+				":tel"=>$tab['tel'],
+				":mdp"=>$tab['mdp'],
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
 		/****************************** USERS *******************************************/
 
 		public function selectUser($email, $mdp){
 			$requete_client = "select * from client where email ='".$email."' and mdp ='".$mdp."'; " ;
-			$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
+			echo $requete_client;
 			if ($this->pdo != null){
-				$select = $this->pdo->prepare($requete_client);
-				$select->execute();
-				//extraction du user
-				if($select->fetch() != null){
-					return $select->fetch();
-				} else{
-					$select = $this->pdo->prepare($requete_technicien);
-					$select->execute();
-					return $select->fetch();
+				$select_client = $this->pdo->prepare($requete_client);
+				$select_client->execute();
+				$unUser = $select_client->fetch(); 
+				if ($unUser == null){
+					$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
+					echo $requete_technicien;
+					$select_technicien = $this->pdo->prepare($requete_technicien);
+					$select_technicien->execute();
+					$unUser = $select_technicien->fetch(); 
 				}
-			} else {
-				return null;
 			}
+			return $unUser; 
 		}
 	}
 ?>

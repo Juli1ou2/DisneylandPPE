@@ -32,13 +32,14 @@ body{
 	margin: auto;
 	padding:  0px;
 	font-family: Aileron-Regular-webfont, arial, sans-serif;
+	background-color: #f5f5f5;
 }
 
 #table_affichage{
 	border-collapse: collapse;
-	box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+	box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 	margin: 20px;
-	border:  2px solid black;
+	border:  2px solid; black;
 }
 
 #table_affichage th{
@@ -62,13 +63,30 @@ body{
 	background-color: #f3f3f3;
 }
 
+#bloc{
+	width: max-content;
+	padding: 5px;
+	margin: auto;
+	background-color: #f8f8f8;
+	border-radius: 25px;
+	box-shadow: 0 15px 23px rgba(0,0,0,0.15);
+}
+
+#grand_bloc{
+	display: flex;
+	width: 70%;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+}
 
 
 header {
-	background-color: #f5f5f5;
+	background-color: #ededed;
 	color: black;
 	margin-bottom: 30px;
 	padding: 20px;
+	border-bottom: 1px solid #213f8eff;
 	font-family: Aileron-Regular-webfont;
 	display: flex;
 	justify-content: center;
@@ -121,15 +139,25 @@ header h1{
 	color: black;
 }
 
+
+
+.message{
+	color: red;
+	font-weight: bold;
+}
+
+
+
 footer {
-	background-color: #ff1b27;
-	color: white;
+	background-color: #ededed;
+	color: black;
+	border-top: 1px solid #213f8eff;
 	margin-top: 30px;
 	padding: 10px;
 }
 
 footer a {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 

@@ -286,6 +286,16 @@
 			return $nbAttractions;
 		}
 
+		/********************** CLIENTS ***************************/
+
+		public function insertClient($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertClient($tab);
+		}
+
 		/********************** USERS ***************************/
 
 		public function selectUser($email, $mdp){
