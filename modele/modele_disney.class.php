@@ -9,6 +9,7 @@
 			try{
 				//code qui peut poser problème
 				$this->pdo = new PDO("mysql:host=".$serveur.";dbname=".$bdd, $user, $mdp);
+				$this->pdo->query('SET NAMES utf8'); //utf-8 pour les requêtes MySQL
 			} catch (PDOException $exp){
 				//levée d'exception
 				echo "Erreur de connexion au serveur !<br>";
@@ -114,7 +115,7 @@
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
-			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, :idRestaurateur)";
+			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, :idRestaurateur);";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -413,7 +414,7 @@
 		/****************************** TECHNICIENS *******************************************/
 
 		public function insertTechnicien($tab){
-			$requete = "insert into technicien values (null, :nom, :prenom, :adresse, :email, :tel, :qualification, :mdp, :role)";
+			$requete = "insert into technicien values (null, :nom, :prenom, :adresse, :email, :tel, :qualification, :mdp)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -422,7 +423,6 @@
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
 				":mdp"=>$tab['mdp'],
-				":role"=>$tab['role']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -469,7 +469,7 @@
 		}
 
 		public function updateTechnicien($tab){
-			$requete = "update technicien set nom = :nom, prenom = :prenom, adresse = :adresse, email = :email, tel = :tel, qualification = :qualification, mdp = :mdp, mdp = :mdp, role = :role where idTechnicien = :idTechnicien";
+			$requete = "update technicien set nom = :nom, prenom = :prenom, adresse = :adresse, email = :email, tel = :tel, qualification = :qualification, mdp = :mdp, mdp = :mdp where idTechnicien = :idTechnicien";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -478,7 +478,6 @@
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
 				":mdp"=>$tab['mdp'],
-				":role"=>$tab['role'],
 				":idTechnicien"=>$tab['idTechnicien']
 			);
 			if ($this->pdo != null){

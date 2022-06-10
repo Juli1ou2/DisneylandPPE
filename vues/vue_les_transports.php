@@ -17,7 +17,7 @@
 				<th>Type</th>
 				<th>Capacité</th>
 				<th>Affluence</th>
-				<th>Horaire</th>
+				<th>Horaire (fréquence)</th>
 				<th>Prix</th>
 				<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
 					echo '<th>Opérations</th>';
