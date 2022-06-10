@@ -131,7 +131,7 @@ insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride"
 
 insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 1);
 
-insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermé", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
 insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
@@ -165,7 +165,7 @@ insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%",
 
 insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
 
-insert into transport values (null, "Interparc", "Navette interne", 150, "40", "00:05", 0,00);
+insert into transport values (null, "Interparc", "Navette interne", 150, "40", "00:05", 0.00);
 
 
 
