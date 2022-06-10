@@ -109,7 +109,6 @@ CREATE TABLE Reserver1(
 );
 
 
--- 
 insert into parc values (null, "Parc Disneyland", 28000, 34, 14);
 
 insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
@@ -131,12 +130,17 @@ insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride"
 
 insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 1);
 
-insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermé", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
 insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
+insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00", 2, 1 );
 
+insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00", 2, 3 );
 
+insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2 );
+
+insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 1 );
 
 
 
@@ -148,4 +152,16 @@ insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " 
 
 
 
-insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service a table", 200, 1 );
+insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 1 );
+
+insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, 1 );
+
+insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, 2 );
+
+insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, 2 );
+
+
+
+insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
+
+insert into transport values (null, "Interparc", "Navette interne", 150, "40", "00:05", 0.00);
