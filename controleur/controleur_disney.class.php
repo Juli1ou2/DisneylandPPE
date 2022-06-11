@@ -296,6 +296,76 @@
 			$this->unModele->insertClient($tab);
 		}
 
+		/********************** COMMANDES ***************************/
+
+		public function insertCommande($idClient){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertCommande($idClient);
+		}
+
+		public function selectAllCommandes(){
+			$lesCommandes = $this->unModele->selectAllCommandes();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesCommandes;
+		}
+
+		public function insertReserver1($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver1($tab);
+		}
+
+		public function selectAllReserver1(){
+			$lesAttractionsCommande = $this->unModele->selectAllReserver1();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesAttractionsCommande;
+		}
+
+		public function deleteReserver1($idAttraction){
+			$this->unModele->deleteReserver1($idAttraction);
+		}
+
+		public function insertReserver2($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver2($tab);
+		}
+
+		public function selectAllReserver2(){
+			$lesCommandes = $this->unModele->selectAllReserver2();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesCommandes;
+		}
+
+		public function insertReserver3($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver3($tab);
+		}
+
+		public function selectAllReserver3(){
+			$lesCommandes = $this->unModele->selectAllReserver3();
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesCommandes;
+		}
+
 		/********************** USERS ***************************/
 
 		public function selectUser($email, $mdp){

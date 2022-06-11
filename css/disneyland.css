@@ -73,12 +73,17 @@ body{
 }
 
 #grand_bloc{
+	margin: auto;
+	padding: auto;
 	display: flex;
-	width: 70%;
+	width: 80%;
 	justify-content: center;
 	align-items: flex-start;
-	align-content: flex-start;
 }
+
+/*#bloc_commande{
+
+}*/
 
 
 header {
