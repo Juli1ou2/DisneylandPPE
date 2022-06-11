@@ -314,6 +314,7 @@
 			return $lesCommandes;
 		}
 
+		//-------------------------------------------------------------------
 		public function insertReserver1($tab){
 			//on contrôle la validité des données
 			//
@@ -334,6 +335,7 @@
 			$this->unModele->deleteReserver1($idAttraction);
 		}
 
+		//-------------------------------------------------------------------
 		public function insertReserver2($tab){
 			//on contrôle la validité des données
 			//
@@ -343,13 +345,18 @@
 		}
 
 		public function selectAllReserver2(){
-			$lesCommandes = $this->unModele->selectAllReserver2();
+			$lesRestaurantsCommande = $this->unModele->selectAllReserver2();
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
-			return $lesCommandes;
+			return $lesRestaurantsCommande;
 		}
 
+		public function deleteReserver2($idRestaurant){
+			$this->unModele->deleteReserver2($idRestaurant);
+		}
+
+		//-------------------------------------------------------------------
 		public function insertReserver3($tab){
 			//on contrôle la validité des données
 			//
@@ -359,11 +366,15 @@
 		}
 
 		public function selectAllReserver3(){
-			$lesCommandes = $this->unModele->selectAllReserver3();
+			$lesTransportsCommande = $this->unModele->selectAllReserver3();
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
-			return $lesCommandes;
+			return $lesTransportsCommande;
+		}
+
+		public function deleteReserver3($idTransport){
+			$this->unModele->deleteReserver3($idTransport);
 		}
 
 		/********************** USERS ***************************/

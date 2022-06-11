@@ -660,6 +660,7 @@
 			}
 		}
 
+		//-------------------------------------------------------------------
 		public function insertReserver1($tab){
 			$requete = "insert into Reserver1 values (:idAttraction, :idCommande, :dateResa, :heure)";
 			$donnees = array(
@@ -697,6 +698,7 @@
 			}
 		}
 
+		//-------------------------------------------------------------------
 		public function insertReserver2($tab){
 			$requete = "insert into Reserver2 values (:idCommande, :idRestaurant)";
 			$donnees = array(
@@ -711,7 +713,7 @@
 		}
 
 		public function selectAllReserver2(){
-			$requete = "select * from Reserver2";
+			$requete = "select re.idRestaurant, re.nom, re.affluence from restaurant re, commande c, Reserver2 r where c.idCommande = r.idCommande and re.idRestaurant = r.idRestaurant;";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -721,6 +723,18 @@
 			}
 		}
 
+		public function deleteReserver2($idRestaurant){
+			$requete = "delete from Reserver2 where idRestaurant = :idRestaurant;";
+			$donnees = array(
+				":idRestaurant"=>$idRestaurant);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
+		//-------------------------------------------------------------------
 		public function insertReserver3($tab){
 			$requete = "insert into Reserver3 values (:idTransport, :idCommande, :dateResa, :heure)";
 			$donnees = array(
@@ -737,13 +751,24 @@
 		}
 
 		public function selectAllReserver3(){
-			$requete = "select * from Reserver3";
+			$requete = "select t.idTransport, t.libelle, t.affluence, r.dateResa, r.heure, t.prix from transport t, commande c, Reserver3 r where c.idCommande = r.idCommande and t.idTransport = r.idTransport;";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
 				return $select->fetchAll();
 			} else {
 				return null;
+			}
+		}
+
+		public function deleteReserver3($idTransport){
+			$requete = "delete from Reserver3 where idTransport = :idTransport;";
+			$donnees = array(
+				":idTransport"=>$idTransport);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
 			}
 		}
 
