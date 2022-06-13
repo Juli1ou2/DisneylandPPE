@@ -1,7 +1,10 @@
 <br><br><br>
 <div id="bloc_recapitulatif">
-	<h2>Récapitulatif</h2>
-
+	<?php
+		echo '<h2>Récapitulatif commande n°'.$idCommande.'</h2>';
+		echo '<h3>Total : '.$unControleur->selectWhereCommande($idCommande)['prix'].'€</h3';
+	?>
+	<br>
 	<table id="table_affichage">
 		<thead>
 			<tr>
@@ -23,7 +26,7 @@
 				<td>".$unAttractionCommande['prix']."</td>
 				<td>";
 				// <a href='index.php?page=7&action=edit&idAttraction=".$unAttractionCommande['idAttraction']."'><img src='images/edit.png' height='35' width='35'></a>";
-				echo "<a href='index.php?page=7&action=sup&idAttraction=".$unAttractionCommande['idAttraction']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
+				echo "<a href='index.php?page=7&action=sup&idAttraction=".$unAttractionCommande['idAttraction']."&idCommande=".$unAttractionCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
 				</tr>";
 			}
 		?>
@@ -71,9 +74,24 @@
 				<td>".$unTransportCommande['prix']."</td>
 				<td>";
 				// <a href='index.php?page=7&action=edit&idTransport=".$unTransportCommande['idTransport']."'><img src='images/edit.png' height='35' width='35'></a>";
-				echo "<a href='index.php?page=7&action=sup&idTransport=".$unTransportCommande['idTransport']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
+				echo "<a href='index.php?page=7&action=sup&idTransport=".$unTransportCommande['idTransport']."&idCommande=".$unTransportCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
 				</tr>";
 			}
 		?>
 	</table>
+	<br>
+	<form method="post" action="">
+		<select name="idCommande" value="">
+					<?php
+						$lesCommandes = $unControleur->selectAllCommandes();
+						foreach ($lesCommandes as $unCommande) {
+							echo "<option value='".$unCommande['idCommande']."'>";
+							echo $unCommande['idCommande'];
+							echo "</option>";
+						}
+					?>
+		</select>
+		<input type="submit" name="SelectionCommande" value="Valider">
+	</form>
+	<br>
 </div>

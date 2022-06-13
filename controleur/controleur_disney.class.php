@@ -314,6 +314,10 @@
 			return $lesCommandes;
 		}
 
+		public function selectWhereCommande($idCommande){
+			return $this->unModele->selectWhereCommande($idCommande);
+		}
+
 		//-------------------------------------------------------------------
 		public function insertReserver1($tab){
 			//on contrôle la validité des données
@@ -323,8 +327,16 @@
 			$this->unModele->insertReserver1($tab);
 		}
 
-		public function selectAllReserver1(){
-			$lesAttractionsCommande = $this->unModele->selectAllReserver1();
+		public function updatePrixSupCommandeReserver1($tab){
+			$this->unModele->updatePrixSupCommandeReserver1($tab);
+		}
+
+		public function updatePrixMinCommandeReserver1($idAttraction, $idCommande){
+			$this->unModele->updatePrixMinCommandeReserver1($idAttraction, $idCommande);
+		}
+
+		public function selectAllReserver1($idCommande){
+			$lesAttractionsCommande = $this->unModele->selectAllReserver1($idCommande);
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
@@ -344,8 +356,8 @@
 			$this->unModele->insertReserver2($tab);
 		}
 
-		public function selectAllReserver2(){
-			$lesRestaurantsCommande = $this->unModele->selectAllReserver2();
+		public function selectAllReserver2($idCommande){
+			$lesRestaurantsCommande = $this->unModele->selectAllReserver2($idCommande);
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
@@ -365,8 +377,16 @@
 			$this->unModele->insertReserver3($tab);
 		}
 
-		public function selectAllReserver3(){
-			$lesTransportsCommande = $this->unModele->selectAllReserver3();
+		public function updatePrixSupCommandeReserver3($tab){
+			$this->unModele->updatePrixSupCommandeReserver3($tab);
+		}
+
+		public function updatePrixMinCommandeReserver3($idTransport, $idCommande){
+			$this->unModele->updatePrixMinCommandeReserver3($idTransport, $idCommande);
+		}
+
+		public function selectAllReserver3($idCommande){
+			$lesTransportsCommande = $this->unModele->selectAllReserver3($idCommande);
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
