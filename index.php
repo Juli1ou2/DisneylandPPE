@@ -82,6 +82,7 @@
 					session_destroy();
 					header("Location: index.php?page=8");
 				}
+				case 9 : require_once("vues/vue_mentions_legales.php"); break;
 			}
 
 			if (isset($_POST['SeConnecter'])){
@@ -120,6 +121,7 @@
 		<footer>
 			<h3>Contact :</h3>
 			<p><a href="mailto:sav@disneyland.fr">sav@disneyland.fr</a> | <a href="tel:+33825300500" title="Service 0,15 €/min + prix appel">0 825 300 500</a></p>
+			<p><br><a href="index.php?page=9">Mentions légales</a></p>
 		</footer>
 	</center>
 </body>
