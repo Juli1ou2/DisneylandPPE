@@ -648,8 +648,8 @@
 			}
 		}
 
-		public function selectAllCommandes(){
-			$requete = "select * from commande";
+		public function selectAllCommandes($idClient){
+			$requete = "select * from commande where idClient = ".$idClient.";";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -669,6 +669,19 @@
 				$select->execute($donnees);
 				//extraction de la Commande
 				return $select->fetch();
+			} else {
+				return null;
+			}
+		}
+
+		public function selectFirstIdCommande($idClient){
+			$requete = "select idCommande from commande where idClient = ".$idClient.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Attractions
+				var_dump($select->fetchAll()[0]);
+				return $select->fetchAll()[0];
 			} else {
 				return null;
 			}
@@ -729,10 +742,12 @@
 			}
 		}
 
-		public function deleteReserver1($idAttraction){
-			$requete = "delete from Reserver1 where idAttraction = :idAttraction;";
+		public function deleteReserver1($idAttraction, $heure){
+			$requete = "delete from Reserver1 where idAttraction = :idAttraction and heure = :heure;";
 			$donnees = array(
-				":idAttraction"=>$idAttraction);
+				":idAttraction"=>$idAttraction,
+				":heure"=>$heure
+			);
 			if ($this->pdo != null){
 				//on prépare la requête
 				$delete = $this->pdo->prepare($requete);
@@ -755,7 +770,7 @@
 		}
 
 		public function selectAllReserver2($idCommande){
-			$requete = "select re.idRestaurant, re.nom, re.affluence r.idCommande, from restaurant re, commande c, Reserver2 r where c.idCommande = r.idCommande and re.idRestaurant = r.idRestaurant and r.idCommande = ".$idCommande.";";
+			$requete = "select re.idRestaurant, re.nom, re.affluence, r.idCommande from restaurant re, commande c, Reserver2 r where c.idCommande = r.idCommande and re.idRestaurant = r.idRestaurant and r.idCommande = ".$idCommande.";";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -778,7 +793,7 @@
 
 		//-------------------------------------------------------------------
 		public function insertReserver3($tab){
-			$requete = "insert into Reserver3 values (:idTransport, :idCommande, :dateResa, :heure)";
+			$requete = "insert into Reserver3 values (:idTransport, :idCommande, :dateResa, :heure);";
 			$donnees = array(
 				":idTransport"=>$tab['idTransport'],
 				":idCommande"=>$tab['idCommande'],
@@ -831,10 +846,12 @@
 			}
 		}
 
-		public function deleteReserver3($idTransport){
-			$requete = "delete from Reserver3 where idTransport = :idTransport;";
+		public function deleteReserver3($idTransport, $heure){
+			$requete = "delete from Reserver3 where idTransport = :idTransport and heure = :heure;";
 			$donnees = array(
-				":idTransport"=>$idTransport);
+				":idTransport"=>$idTransport,
+				":heure"=>$heure
+			);
 			if ($this->pdo != null){
 				//on prépare la requête
 				$delete = $this->pdo->prepare($requete);

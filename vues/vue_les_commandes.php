@@ -26,7 +26,7 @@
 				<td>".$unAttractionCommande['prix']."</td>
 				<td>";
 				// <a href='index.php?page=7&action=edit&idAttraction=".$unAttractionCommande['idAttraction']."'><img src='images/edit.png' height='35' width='35'></a>";
-				echo "<a href='index.php?page=7&action=sup&idAttraction=".$unAttractionCommande['idAttraction']."&idCommande=".$unAttractionCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
+				echo "<a href='index.php?page=7&action=sup&idAttraction=".$unAttractionCommande['idAttraction']."&heure=".$unAttractionCommande['heure']."&idCommande=".$unAttractionCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
 				</tr>";
 			}
 		?>
@@ -74,7 +74,7 @@
 				<td>".$unTransportCommande['prix']."</td>
 				<td>";
 				// <a href='index.php?page=7&action=edit&idTransport=".$unTransportCommande['idTransport']."'><img src='images/edit.png' height='35' width='35'></a>";
-				echo "<a href='index.php?page=7&action=sup&idTransport=".$unTransportCommande['idTransport']."&idCommande=".$unTransportCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
+				echo "<a href='index.php?page=7&action=sup&idTransport=".$unTransportCommande['idTransport']."&heure=".$unTransportCommande['heure']."&idCommande=".$unTransportCommande['idCommande']."'><img src='images/sup.jpg' height='35' width='35'></a></td>
 				</tr>";
 			}
 		?>
@@ -83,7 +83,7 @@
 	<form method="post" action="">
 		<select name="idCommande" value="">
 					<?php
-						$lesCommandes = $unControleur->selectAllCommandes();
+						$lesCommandes = $unControleur->selectAllCommandes($_SESSION['id']);
 						foreach ($lesCommandes as $unCommande) {
 							echo "<option value='".$unCommande['idCommande']."'>";
 							echo $unCommande['idCommande'];

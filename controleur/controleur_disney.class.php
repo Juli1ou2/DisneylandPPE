@@ -306,8 +306,8 @@
 			$this->unModele->insertCommande($idClient);
 		}
 
-		public function selectAllCommandes(){
-			$lesCommandes = $this->unModele->selectAllCommandes();
+		public function selectAllCommandes($idClient){
+			$lesCommandes = $this->unModele->selectAllCommandes($idClient);
 			//s'il y a des traitements à faire
 
 			//on renvoie les Commandes
@@ -316,6 +316,10 @@
 
 		public function selectWhereCommande($idCommande){
 			return $this->unModele->selectWhereCommande($idCommande);
+		}
+
+		public function selectFirstIdCommande($idClient){
+			return $this->unModele->selectFirstIdCommande($idClient);
 		}
 
 		//-------------------------------------------------------------------
@@ -343,8 +347,8 @@
 			return $lesAttractionsCommande;
 		}
 
-		public function deleteReserver1($idAttraction){
-			$this->unModele->deleteReserver1($idAttraction);
+		public function deleteReserver1($idAttraction, $heure){
+			$this->unModele->deleteReserver1($idAttraction, $heure);
 		}
 
 		//-------------------------------------------------------------------
@@ -393,8 +397,8 @@
 			return $lesTransportsCommande;
 		}
 
-		public function deleteReserver3($idTransport){
-			$this->unModele->deleteReserver3($idTransport);
+		public function deleteReserver3($idTransport, $heure){
+			$this->unModele->deleteReserver3($idTransport, $heure);
 		}
 
 		/********************** USERS ***************************/

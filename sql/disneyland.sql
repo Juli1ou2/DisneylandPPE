@@ -19,7 +19,7 @@ CREATE TABLE transport(
    libelle VARCHAR(50),
    type VARCHAR(50),
    capacite int(5),
-   affluence VARCHAR(50),
+   affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    horaire time,
    prix int(5),
    PRIMARY KEY(idTransport)
@@ -98,7 +98,7 @@ CREATE TABLE Reserver1(
    idCommande int(3),
    dateResa DATE,
    heure TIME,
-   PRIMARY KEY(idAttraction, idCommande),
+   PRIMARY KEY(idAttraction, idCommande, heure),
    FOREIGN KEY(idAttraction) REFERENCES attraction(idAttraction),
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
@@ -116,7 +116,7 @@ CREATE TABLE Reserver3(
    idCommande int(3),
    dateResa DATE,
    heure TIME,
-   PRIMARY KEY(idTransport, idCommande),
+   PRIMARY KEY(idTransport, idCommande, heure),
    FOREIGN KEY(idTransport) REFERENCES attraction(idTransport),
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
@@ -177,4 +177,4 @@ insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%",
 
 insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
 
-insert into transport values (null, "Interparc", "Navette interne", 150, "40", "00:05", 0.00);
+insert into transport values (null, "Interparc", "Navette interne", 150, "40%", "00:05", 0.00);

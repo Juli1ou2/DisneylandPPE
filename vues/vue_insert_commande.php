@@ -12,7 +12,7 @@
 		<form method="post" action="">
 			<table>
 				<tr>
-					<td>Commande</td>
+					<td>ID Commande</td>
 					<td><select name="idCommande" value="<?php if($leReserver1!=null) echo $leReserver1['idCommande'];?>">
 						<?php
 							foreach ($lesCommandes as $unCommande) {
@@ -58,7 +58,7 @@
 		<form method="post" action="">
 			<table>
 				<tr>
-					<td>Commande</td>
+					<td>ID Commande</td>
 					<td><select name="idCommande" value="<?php if($leReserver2!=null) echo $leReserver2['idCommande'];?>">
 						<?php
 							foreach ($lesCommandes as $unCommande) {
@@ -96,7 +96,7 @@
 		<form method="post" action="">
 			<table>
 				<tr>
-					<td>Commande</td>
+					<td>ID Commande</td>
 					<td><select name="idCommande" value="<?php if($leReserver3!=null) echo $leReserver3['idCommande'];?>">
 						<?php
 							foreach ($lesCommandes as $unCommande) {

@@ -4,22 +4,24 @@
 	$leReserver1 = null;
 	$leReserver2 = null;
 	$leReserver3 = null;
-	$lesCommandes = $unControleur->selectAllCommandes();
+	$idCommande = 0;
+	$lesCommandes = $unControleur->selectAllCommandes($_SESSION['id']);
 	$lesTransports = $unControleur->selectAllTransports();
 	$lesAttractions = $unControleur->selectAllAttractions();
 	$lesRestaurants = $unControleur->selectAllRestaurants();
-	$idCommande = 1;
 	
 
 	if (isset($_SESSION['email'])){
 		if (isset($_GET['action']) and isset($_GET['idAttraction']) and isset($_GET['idCommande'])){
 			$action = $_GET['action'];
 			$idAttraction = $_GET['idAttraction'];
+			$heure = $_GET['heure'];
 			$idCommande = $_GET['idCommande'];
 			switch ($action){
 				case "sup":
-				$unControleur->deleteReserver1($idAttraction); 
+				$unControleur->deleteReserver1($idAttraction, $heure); 
 				$unControleur->updatePrixMinCommandeReserver1($idAttraction, $idCommande);
+				header("Location: index.php?page=7");
 				break;
 				// case "edit": $leAttraction = $unControleur->selectWhereAttraction($idAttraction); break;
 			}
@@ -31,13 +33,14 @@
 				case "sup": $unControleur->deleteReserver2($idRestaurant); break;
 			}
 		}
-		if (isset($_GET['action']) and isset($_GET['idTransport']) and isset($_GET['idCommande'])){
+		if (isset($_GET['action']) and isset($_GET['idTransport']) and isset($_GET['idCommande']) and isset($_GET['heure'])){
 			$action = $_GET['action'];
 			$idTransport = $_GET['idTransport'];
+			$heure = $_GET['heure'];
 			$idCommande = $_GET['idCommande'];
 			switch ($action){
 				case "sup":
-				$unControleur->deleteReserver3($idTransport);
+				$unControleur->deleteReserver3($idTransport, $heure);
 				$unControleur->updatePrixMinCommandeReserver3($idTransport, $idCommande);
 				break;
 			}
