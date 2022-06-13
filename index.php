@@ -31,11 +31,17 @@
 					<a href="index.php?page=0"><h3>ACCUEIL</h3></a>
 					<a href="index.php?page=1"><h3>PARCS</h3></a>
 					<a href="index.php?page=2"><h3>ATTRACTIONS</h3></a>
-					<a href="index.php?page=3"><h3>TECHNICIENS</h3></a>
+					<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+						echo '<a href="index.php?page=3"><h3>TECHNICIENS</h3></a>';
+					} ?>
 					<a href="index.php?page=4"><h3>RESTAURANTS</h3></a>
-					<a href="index.php?page=5"><h3>RESTAURATEURS</h3></a>
+					<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+						echo '<a href="index.php?page=5"><h3>RESTAURATEURS</h3></a>';
+					} ?>
 					<a href="index.php?page=6"><h3>TRANSPORTS</h3></a>
-					<a href="index.php?page=7"><h3>COMMANDES</h3></a>
+					<?php if(isset($_SESSION['email'])){
+						echo '<a href="index.php?page=7"><h3>COMMANDES</h3></a>';
+					} ?>
 					<?php if (! isset($_SESSION['email'])){
 						echo '<a href="index.php?page=8"><h3>Connexion</h3></a>';
 					} else{
@@ -55,11 +61,20 @@
 				case 0 : require_once("home.php"); break;
 				case 1 : require_once("parcs.php"); break;
 				case 2 : require_once("attractions.php"); break;
-				case 3 : require_once("techniciens.php"); break;
+				case 3 : 
+				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+					require_once("techniciens.php"); break;
+				}
 				case 4 : require_once("restaurants.php"); break;
-				case 5 : require_once("restaurateurs.php"); break;
+				case 5 : 
+				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+					require_once("restaurateurs.php"); break;
+				}
 				case 6 : require_once("transports.php"); break;
-				case 7 : require_once("commandes.php"); break;
+				case 7 : 
+				if(isset($_SESSION['email'])){
+					require_once("commandes.php"); break;
+				}
 				case 8 :
 				if (! isset($_SESSION['email'])){
 					require_once("vues/vue_connexion.php"); break;
@@ -73,21 +88,23 @@
 				$email = $_POST['email'];
 				$mdp = $_POST['mdp'];
 				$unUser = $unControleur->selectUser($email, $mdp);
-				// var_dump($unUser);
 				if($unUser == null){
 					echo "<p><br><br>VEUILLEZ VERIFIER VOS IDENTIFIANTS !</p>";
 				} else {
 
 					if (isset($unUser['qualification'])){
 						$_SESSION['type'] = "Technicien";
+						$_SESSION['id'] = $unUser['idTechnicien'];
 					}else {
 						$_SESSION['type'] = "Client";
+						$_SESSION['id'] = $unUser['idClient'];
 					}
 					//Création de la session user
 					$_SESSION['email'] = $unUser['email'];
 					$_SESSION['nom'] = $unUser['nom'];
 					$_SESSION['prenom'] = $unUser['prenom'];
 					//$_SESSION['role'] = $unUser['role'];
+
 					//on recharge la page vers le HOME
 					header("Location: index.php?page=0");
 

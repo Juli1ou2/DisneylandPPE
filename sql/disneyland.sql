@@ -19,7 +19,7 @@ CREATE TABLE transport(
    libelle VARCHAR(50),
    type VARCHAR(50),
    capacite int(5),
-   affluence VARCHAR(50),
+   affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    horaire time,
    prix int(5),
    PRIMARY KEY(idTransport)
@@ -89,22 +89,35 @@ CREATE TABLE commande(
    idCommande int(3) not null auto_increment,
    prix int(5),
    idClient int(3) NOT NULL,
-   idRestaurant int(3) NOT NULL,
-   idTransport int(3) NOT NULL,
    PRIMARY KEY(idCommande),
-   FOREIGN KEY(idClient) REFERENCES client(idClient),
-   FOREIGN KEY(idRestaurant) REFERENCES restaurant(idRestaurant),
-   FOREIGN KEY(idTransport) REFERENCES transport(idTransport)
+   FOREIGN KEY(idClient) REFERENCES client(idClient)
 );
 
 CREATE TABLE Reserver1(
    idAttraction int(3),
    idCommande int(3),
    dateResa DATE,
-   heureDeb TIME,
-   heureFin TIME,
-   PRIMARY KEY(idAttraction, idCommande),
+   heure TIME,
+   PRIMARY KEY(idAttraction, idCommande, heure),
    FOREIGN KEY(idAttraction) REFERENCES attraction(idAttraction),
+   FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
+);
+
+CREATE TABLE Reserver2(
+   idCommande int(3),
+   idRestaurant int(3),
+   PRIMARY KEY(idCommande, idRestaurant),
+   FOREIGN KEY(idCommande) REFERENCES commande(idCommande),
+   FOREIGN KEY(idRestaurant) REFERENCES restaurant(idRestaurant)
+);
+
+CREATE TABLE Reserver3(
+   idTransport int(3),
+   idCommande int(3),
+   dateResa DATE,
+   heure TIME,
+   PRIMARY KEY(idTransport, idCommande, heure),
+   FOREIGN KEY(idTransport) REFERENCES attraction(idTransport),
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
 
@@ -164,4 +177,4 @@ insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%",
 
 insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
 
-insert into transport values (null, "Interparc", "Navette interne", 150, "40", "00:05", 0.00);
+insert into transport values (null, "Interparc", "Navette interne", 150, "40%", "00:05", 0.00);

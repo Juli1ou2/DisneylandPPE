@@ -637,6 +637,228 @@
 			}
 		}
 
+		/****************************** COMMANDES *******************************************/
+
+		public function insertCommande($idClient){
+			$requete = "insert into commande values (null, 0, ".$idClient.");";
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute();
+			}
+		}
+
+		public function selectAllCommandes($idClient){
+			$requete = "select * from commande where idClient = ".$idClient.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function selectWhereCommande($idCommande){
+			$requete = "select * from commande where idCommande = :idCommande;";
+			$donnees = array(
+				":idCommande"=>$idCommande);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction de la Commande
+				return $select->fetch();
+			} else {
+				return null;
+			}
+		}
+
+		public function selectFirstIdCommande($idClient){
+			$requete = "select idCommande from commande where idClient = ".$idClient.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Attractions
+				var_dump($select->fetchAll()[0]);
+				return $select->fetchAll()[0];
+			} else {
+				return null;
+			}
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver1($tab){
+			$requete = "insert into Reserver1 values (:idAttraction, :idCommande, :dateResa, :heure);";
+			$donnees = array(
+				":idAttraction"=>$tab['idAttraction'],
+				":idCommande"=>$tab['idCommande'],
+				":dateResa"=>$tab['dateResa'],
+				":heure"=>$tab['heure']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function updatePrixSupCommandeReserver1($tab){
+			$leAttraction = $this->selectWhereAttraction($tab['idAttraction']);
+			$requete = "update commande set prix=(prix+:prix) where idCommande = :idCommande;";
+			$donnees = array(
+				":prix"=>$leAttraction['prix'],
+				":idCommande"=>$tab['idCommande']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function updatePrixMinCommandeReserver1($idAttraction, $idCommande){
+			$leAttraction = $this->selectWhereAttraction($idAttraction);
+			$requete = "update commande set prix=(prix-:prix) where idCommande = :idCommande;";
+			$donnees = array(
+				":prix"=>$leAttraction['prix'],
+				":idCommande"=>$idCommande
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function selectAllReserver1($idCommande){
+			$requete = "select a.idAttraction, a.nom, a.affluence, r.dateResa, r.heure, r.idCommande, a.prix from attraction a, commande c, Reserver1 r where c.idCommande = r.idCommande and a.idAttraction = r.idAttraction and r.idCommande = ".$idCommande.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function deleteReserver1($idAttraction, $heure){
+			$requete = "delete from Reserver1 where idAttraction = :idAttraction and heure = :heure;";
+			$donnees = array(
+				":idAttraction"=>$idAttraction,
+				":heure"=>$heure
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver2($tab){
+			$requete = "insert into Reserver2 values (:idCommande, :idRestaurant)";
+			$donnees = array(
+				":idRestaurant"=>$tab['idRestaurant'],
+				":idCommande"=>$tab['idCommande']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function selectAllReserver2($idCommande){
+			$requete = "select re.idRestaurant, re.nom, re.affluence, r.idCommande from restaurant re, commande c, Reserver2 r where c.idCommande = r.idCommande and re.idRestaurant = r.idRestaurant and r.idCommande = ".$idCommande.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function deleteReserver2($idRestaurant){
+			$requete = "delete from Reserver2 where idRestaurant = :idRestaurant;";
+			$donnees = array(
+				":idRestaurant"=>$idRestaurant);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver3($tab){
+			$requete = "insert into Reserver3 values (:idTransport, :idCommande, :dateResa, :heure);";
+			$donnees = array(
+				":idTransport"=>$tab['idTransport'],
+				":idCommande"=>$tab['idCommande'],
+				":dateResa"=>$tab['dateResa'],
+				":heure"=>$tab['heure'],
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function updatePrixSupCommandeReserver3($tab){
+			$leTransport = $this->selectWhereTransport($tab['idTransport']);
+			$requete = "update commande set prix=(prix+:prix) where idCommande = :idCommande;";
+			$donnees = array(
+				":prix"=>$leTransport['prix'],
+				":idCommande"=>$tab['idCommande']
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function updatePrixMinCommandeReserver3($idTransport, $idCommande){
+			$leTransport = $this->selectWhereTransport($idTransport);
+			$requete = "update commande set prix=(prix-:prix) where idCommande = :idCommande;";
+			$donnees = array(
+				":prix"=>$leTransport['prix'],
+				":idCommande"=>$idCommande
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$insert = $this->pdo->prepare($requete);
+				$insert->execute($donnees);
+			}
+		}
+
+		public function selectAllReserver3($idCommande){
+			$requete = "select t.idTransport, t.libelle, t.affluence, r.dateResa, r.heure, r.idCommande, t.prix from transport t, commande c, Reserver3 r where c.idCommande = r.idCommande and t.idTransport = r.idTransport and r.idCommande = ".$idCommande.";";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function deleteReserver3($idTransport, $heure){
+			$requete = "delete from Reserver3 where idTransport = :idTransport and heure = :heure;";
+			$donnees = array(
+				":idTransport"=>$idTransport,
+				":heure"=>$heure
+			);
+			if ($this->pdo != null){
+				//on prépare la requête
+				$delete = $this->pdo->prepare($requete);
+				$delete->execute($donnees);
+			}
+		}
+
 		/****************************** USERS *******************************************/
 
 		public function selectUser($email, $mdp){

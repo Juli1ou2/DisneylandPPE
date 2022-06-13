@@ -296,6 +296,111 @@
 			$this->unModele->insertClient($tab);
 		}
 
+		/********************** COMMANDES ***************************/
+
+		public function insertCommande($idClient){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertCommande($idClient);
+		}
+
+		public function selectAllCommandes($idClient){
+			$lesCommandes = $this->unModele->selectAllCommandes($idClient);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesCommandes;
+		}
+
+		public function selectWhereCommande($idCommande){
+			return $this->unModele->selectWhereCommande($idCommande);
+		}
+
+		public function selectFirstIdCommande($idClient){
+			return $this->unModele->selectFirstIdCommande($idClient);
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver1($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver1($tab);
+		}
+
+		public function updatePrixSupCommandeReserver1($tab){
+			$this->unModele->updatePrixSupCommandeReserver1($tab);
+		}
+
+		public function updatePrixMinCommandeReserver1($idAttraction, $idCommande){
+			$this->unModele->updatePrixMinCommandeReserver1($idAttraction, $idCommande);
+		}
+
+		public function selectAllReserver1($idCommande){
+			$lesAttractionsCommande = $this->unModele->selectAllReserver1($idCommande);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesAttractionsCommande;
+		}
+
+		public function deleteReserver1($idAttraction, $heure){
+			$this->unModele->deleteReserver1($idAttraction, $heure);
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver2($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver2($tab);
+		}
+
+		public function selectAllReserver2($idCommande){
+			$lesRestaurantsCommande = $this->unModele->selectAllReserver2($idCommande);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesRestaurantsCommande;
+		}
+
+		public function deleteReserver2($idRestaurant){
+			$this->unModele->deleteReserver2($idRestaurant);
+		}
+
+		//-------------------------------------------------------------------
+		public function insertReserver3($tab){
+			//on contrôle la validité des données
+			//
+
+			//appel au modèle pour l'insertion
+			$this->unModele->insertReserver3($tab);
+		}
+
+		public function updatePrixSupCommandeReserver3($tab){
+			$this->unModele->updatePrixSupCommandeReserver3($tab);
+		}
+
+		public function updatePrixMinCommandeReserver3($idTransport, $idCommande){
+			$this->unModele->updatePrixMinCommandeReserver3($idTransport, $idCommande);
+		}
+
+		public function selectAllReserver3($idCommande){
+			$lesTransportsCommande = $this->unModele->selectAllReserver3($idCommande);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Commandes
+			return $lesTransportsCommande;
+		}
+
+		public function deleteReserver3($idTransport, $heure){
+			$this->unModele->deleteReserver3($idTransport, $heure);
+		}
+
 		/********************** USERS ***************************/
 
 		public function selectUser($email, $mdp){

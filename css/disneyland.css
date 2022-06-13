@@ -73,12 +73,30 @@ body{
 }
 
 #grand_bloc{
+	margin: auto;
+	padding: auto;
+	width: max-content;
 	display: flex;
-	width: 70%;
+	width: 80%;
 	justify-content: center;
 	align-items: flex-start;
-	align-content: flex-start;
 }
+
+#bloc_recapitulatif{
+	width: max-content;
+	padding: 5px;
+	margin: auto;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	background-color: #f8f8f8;
+	border-radius: 25px;
+	box-shadow: 0 15px 23px rgba(0,0,0,0.15);
+}
+
+/*#bloc_commande{
+
+}*/
 
 
 header {
