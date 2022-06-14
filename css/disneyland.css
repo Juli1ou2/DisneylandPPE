@@ -165,6 +165,22 @@ header h1{
 }
 
 
+section {
+	text-align: left;
+	padding: 20px;
+	margin-left: 20%;
+	margin-right: 20%;
+	background-color: #f8f8f8;
+	border-radius: 25px;
+	box-shadow: 0 15px 23px rgba(0,0,0,0.15);
+}
+
+section h2{
+	padding-bottom: 3%;
+	text-align: center;
+}
+
+
 
 footer {
 	background-color: #ededed;
