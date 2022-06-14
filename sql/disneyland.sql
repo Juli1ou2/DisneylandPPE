@@ -117,7 +117,7 @@ CREATE TABLE Reserver3(
    dateResa DATE,
    heure TIME,
    PRIMARY KEY(idTransport, idCommande, heure),
-   FOREIGN KEY(idTransport) REFERENCES attraction(idTransport),
+   FOREIGN KEY(idTransport) REFERENCES transport(idTransport),
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
 
@@ -159,9 +159,9 @@ insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans l
 
 insert into restaurateur values ( null, "Da Costa", "Lucas", "9 rue du repas", "ldacosta7797@gmail.com", "0707070707", "Chef cuisinier");
 
-insert into restaurateur values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "0607070707", "Comis de cuisine" ) ;
+insert into restaurateur values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "0607070707", "Commis de cuisine" ) ;
 
-insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Comis de cuisine" ) ;
+insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Commis de cuisine" ) ;
 
 
 
