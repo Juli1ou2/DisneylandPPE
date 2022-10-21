@@ -9,7 +9,10 @@
 			</tr>
 			<tr>
 				<td>Type</td>
-				<td><input type="text" name="type" value="<?= ($leTransport != null) ? $leTransport['type'] : ""?>"></td>
+				<td><select name="type">
+					<option value="Transport externe">Transport Externe</option>
+					<option value="Transport interne">Transport Interne</option>
+				</select></td>			
 			</tr>
 			<tr>
 				<td>Capacité</td>
@@ -30,7 +33,7 @@
 					<option value="90%">90%</option>
 					<option value="Pleine">Pleine</option>
 				</select></td>
-			</tr>
+			</tr>			
 			<tr>
 				<td>Horaire (fréquence)</td>
 				<td><input type="time" name="horaire" value="<?= ($leTransport != null) ? $leTransport['horaire'] : ""?>"></td>

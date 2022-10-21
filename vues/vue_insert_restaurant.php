@@ -43,6 +43,15 @@
 				<td><input type="text" name="capacite" value="<?= ($leRestaurant != null) ? $leRestaurant['capacite'] : ""?>"></td>
 			</tr>
 			<tr>
+				<td> Nombre d'étoiles</td>
+				<td><select name="nbEtoile">
+					<option value ="0">0</option>
+					<option value ="1">1</option>
+					<option value ="2">2</option>
+					<option value ="3">3</option>
+				</select></td>
+			</tr>
+			<tr>
 				<td>Restaurateur</td>
 				<td><select name="idRestaurateur" value="<?php if($leRestaurant!=null) echo $leRestaurant['idRestaurateur'];?>">
 					<?php

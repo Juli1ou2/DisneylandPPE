@@ -198,6 +198,19 @@
 			} else {
 				return null;
 			}
+
+		}
+
+		public function filtreAscRestaurant($choix){
+			$requete = "select * from restaurant order by nom ".$choix;
+			 
+			if ($this->pdo != null){
+				//on prépare la requête
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				return $select->fetchAll();
+			}
+
 		}
 
 		public function countRestaurants(){

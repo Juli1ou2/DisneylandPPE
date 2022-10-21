@@ -80,6 +80,7 @@ CREATE TABLE restaurant(
    affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    type enum ("Service à Table", "Restauration à Emporter"),
    capacite int(5),
+   nbEtoile enum ( "0" ,"1", "2","3");
    idRestaurateur int(3) NOT NULL,
    PRIMARY KEY(idRestaurant),
    FOREIGN KEY(idRestaurateur) REFERENCES restaurateur(idRestaurateur)
@@ -165,13 +166,13 @@ insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " 
 
 
 
-insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 1 );
+insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, "3", 1 );
 
-insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, 1 );
+insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, "2", 1 );
 
-insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, 2 );
+insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, "1", 2 );
 
-insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, 2 );
+insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, "0", 2 );
 
 
 

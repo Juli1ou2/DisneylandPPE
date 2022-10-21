@@ -9,6 +9,7 @@
 			switch ($action){
 				case "sup": $unControleur->deleteRestaurant($idRestaurant); break;
 				case "edit": $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant); break;
+				case "voir" : $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant);break;
 			}
 		}
 
@@ -25,6 +26,14 @@
 	if (isset($_POST['Rechercher'])){
 		$mot = $_POST['mot'];
 		$lesRestaurants = $unControleur->searchRestaurant($mot);
+	} else {
+		$lesRestaurants = $unControleur->selectAllRestaurants();
+	}
+
+	if (isset($_POST['Nom_ASC'])){
+
+		$lesRestaurants =$unControleur->filtreASCRestaurant("ASC");
+		echo "asc";
 	} else {
 		$lesRestaurants = $unControleur->selectAllRestaurants();
 	}

@@ -1,44 +1,25 @@
-<br><br><br>
-<div id="bloc">
-	<h2>Liste des parcs</h2>
-
-	<form method="post" action="">
-		Rechercher :
-		<input type="text" name="mot">
-		<input type="submit" name="Rechercher" value="Rechercher">
-	</form>
-	<br/>
-
-	<table id="table_affichage">
-		<thead>
-			<tr>
-				<th>ID Parc</th>
-				<th>Nom</th>
-				<th>Capacité</th>
-				<th>Nombre total d'attractions</th>
-				<th>Nombre d'attractions fonctionnelles</th>
-				<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
-					echo '<th>Opérations</th>';
-				} ?>
-			</tr>
-		</thead>
-		<?php 
-			foreach ($lesParcs as $unParc){
-				echo "<tr>
-				<td>".$unParc['idParc']."</td>
-				<td>".$unParc['nom']."</td>
-				<td>".$unParc['capacite']."</td>
-				<td>".$unParc['nbAttractionsTotales']."</td>
-				<td>".$unParc['nbAttractionsFonctionnelles']."</td>";
-				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
-					echo "<td><a href='index.php?page=1&action=edit&idParc=".$unParc['idParc']."'><img src='images/edit.png' height='35' width='35'></a>";
-					echo "<a href='index.php?page=1&action=sup&idParc=".$unParc['idParc']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
-				}
-				echo "</tr>";
-			}
-		?>
-	</table>
-</div>
-
-<br><br>
-<img src="images/parc.jpg" height="480" width="720">
+<h2>Liste des parcs</h2>
+<table border="1">
+	<tr>
+		<td>ID Parc</td>
+		<td>Nom</td>
+		<td>Capacité</td>
+		<td>Nombre total d'attractions</td>
+		<td>Nombre d'attractions fonctionnelles</td>
+		<td>Opérations</td>
+	</tr>
+	
+	<?php 
+		foreach ($lesParcs as $unParc){
+			echo "<tr>
+			<td>".$unParc['idParc']."</td>
+			<td>".$unParc['nom']."</td>
+			<td>".$unParc['capacite']."</td>
+			<td>".$unParc['nbAttractionsTotales']."</td>
+			<td>".$unParc['nbAttractionsFonctionnelles']."</td>";
+			echo "<td><a href='index.php?page=1&action=edit&idParc=".$unParc['idParc']."'><img src='images/edit.png' height='35' width='35'></a>";
+			echo "<a href='index.php?page=1&action=sup&idParc=".$unParc['idParc']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
+			echo "</tr>";
+		}
+	?>
+</table>
