@@ -547,6 +547,18 @@
 			}
 		}
 
+		public function searchAttractionOrderBy($categorie, $fleche){
+			$requete = "select * from attraction order by ".$categorie." ".$fleche." ;" ;
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction de tous les Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
 		public function deleteAttraction($idAttraction){
 			$requete = "delete from attraction where idAttraction = :idAttraction;";
 			$donnees = array(
@@ -596,6 +608,18 @@
 
 		public function searchAttraction($mot){
 			$requete = "select * from attraction where nom like'%".$mot."%' or status like '%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or prix like '%".$mot."%' or heureOuv like '%".$mot."%' or heureFerm like '%".$mot."%';";
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute();
+				//extraction des Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function searchAttractionWhereType($type){
+			$requete = "select * from attraction where type like '%".$type."%' ;";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();

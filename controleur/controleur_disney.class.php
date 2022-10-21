@@ -258,6 +258,14 @@
 			return $lesAttractions;
 		}
 
+		public function searchAttractionOrderBy($categorie, $fleche){
+			$lesAttractions = $this->unModele->searchAttractionOrderBy($categorie, $fleche);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
+		}
+
 		public function deleteAttraction($idAttraction){
 			$this->unModele->deleteAttraction($idAttraction);
 		}
@@ -272,6 +280,14 @@
 
 		public function searchAttraction($mot){
 			$lesAttractions =  $this->unModele->searchAttraction($mot);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
+		}
+
+		public function searchAttractionWhereType($type){
+			$lesAttractions =  $this->unModele->searchAttractionWhereType($type);
 			//s'il y a des traitements à faire
 
 			//on renvoie les Attractions

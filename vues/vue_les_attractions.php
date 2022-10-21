@@ -8,13 +8,24 @@
 		<input type="submit" name="Rechercher" value="Rechercher">
 	</form>
 	<br/>
+	<form method="post" action="">
+		<p>Filtre par type :</p>
+		<a type="button" href='index.php?page=2&action=search&type=Spectacle'>Spectacle</a>
+		<a type="button" href='index.php?page=2&action=search&type=Montagne Russe'>Montagne Russe</a>
+		<a type="button" href='index.php?page=2&action=search&type=Manège'>Manège</a>
+		<a type="button" href='index.php?page=2&action=search&type=Dark Ride'>Dark Ride</a>
+		<a type="button" href='index.php?page=2&action=search&type=Simulateur de vol'>Simulateur de vol</a>
+		<a type="button" href='index.php?page=2&action=search&type=Chute dans le vide'>Chute dans le vide</a>
+		<a type="button" href='index.php?page=2&action=search&type='>Tout</a>
+	</form>
+	<br>
 
 	<table id="table_affichage">
 		<thead>
 			<tr>
 				<th>ID Attraction</th>
-				<th>Nom</th>
-				<th>Statut</th>
+				<th>Nom <a type="button" href='index.php?page=2&action=order&categorie=nom&fleche=asc'>↑</a> <a type="button" href='index.php?page=2&action=order&categorie=nom&fleche=desc'>↓</a></th>
+				<th>Statut <a type="button" href='index.php?page=2&action=order&categorie=status&fleche=asc'>↑</a> <a type="button" href='index.php?page=2&action=order&categorie=status&fleche=desc'>↓</a></th>
 				<th>Type</th>
 				<th>Capacité (pers/h)</th>
 				<th>Affluence</th>

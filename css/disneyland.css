@@ -180,6 +180,55 @@ section h2{
 	text-align: center;
 }
 
+#bloc a{
+	color: blue;
+	text-decoration: none;
+	padding: 10px;
+	margin: 3px;
+	border-radius: 15px;
+	border: 2px solid blue;
+}
+
+#bloc a:hover{
+	color: lightblue;
+	padding: 10px;
+	margin: 3px;
+	border-radius: 15px;
+	border: 2px solid transparent;
+}
+
+#bloc a:visited{
+	color: blue;
+	text-decoration: none;
+	padding: 10px;
+	margin: 3px;
+	border-radius: 15px;
+	border: 2px solid blue;
+}
+
+#table_affichage a{
+	color: white;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: none;
+	border: none;
+}
+
+#table_affichage a:hover{
+	color: grey;
+	padding: 4px;
+	border-radius: none;
+	border: none;
+}
+
+#table_affichage a:visited{
+	color: white;
+	text-decoration: none;
+	padding: 4px;
+	border-radius: none;
+	border: none;
+}
+
 
 
 footer {
