@@ -1,18 +1,46 @@
-drop database if exists disneyland;
-create database disneyland;
-use disneyland;
+drop database if exists disneyland_heritage;
+create database disneyland_heritage;
+use disneyland_heritage;
 
-CREATE TABLE technicien(
-   idTechnicien int(3) not null auto_increment,
+
+
+CREATE TABLE user(
+   iduser int(3) not null auto_increment,
    nom VARCHAR(50),
    prenom VARCHAR(50),
    adresse VARCHAR(50),
    email VARCHAR(50),
-   tel VARCHAR(50),
-   qualification VARCHAR(50),
    mdp VARCHAR(50),
-   PRIMARY KEY(idTechnicien)
+   tel VARCHAR(50),
+   role enum("admin", "technicien", "client", "restaurateur"),
+   PRIMARY KEY(iduser)
+); 
+
+CREATE TABLE technicien(
+   iduser int(3) not null ,
+   qualification VARCHAR(50),
+   dateentree date,
+   PRIMARY KEY(iduser), 
+   foreign key (iduser) references user(iduser)
 );
+
+CREATE TABLE client(
+   iduser int(3) not null ,
+   statut  VARCHAR(50),
+   datenaissance date,
+   promotion float, 
+   PRIMARY KEY(iduser), 
+   foreign key (iduser) references user(iduser)
+);
+
+CREATE TABLE restaurateur(
+   iduser int(3) not null ,
+   qualification VARCHAR(50),
+   anciennte varchar (30),
+   PRIMARY KEY(iduser), 
+   foreign key (iduser) references user(iduser)
+);
+
 
 CREATE TABLE transport(
    idTransport int(3) not null auto_increment,
@@ -34,26 +62,7 @@ CREATE TABLE parc(
    PRIMARY KEY(idParc)
 );
 
-CREATE TABLE restaurateur(
-   idRestaurateur int(3) not null auto_increment,
-   nom VARCHAR(50),
-   prenom VARCHAR(50),
-   adresse VARCHAR(50),
-   mail VARCHAR(50),
-   tel VARCHAR(50),
-   qualification VARCHAR(50),
-   PRIMARY KEY(idRestaurateur)
-);
-
-CREATE TABLE client(
-   idClient int(3) not null auto_increment,
-   nom VARCHAR(50),
-   prenom VARCHAR(50),
-   email VARCHAR(50),
-   mdp VARCHAR(50),
-   tel VARCHAR(50),
-   PRIMARY KEY(idClient)
-);
+ 
 
 CREATE TABLE attraction(
    idAttraction int(3) not null auto_increment,
@@ -66,9 +75,9 @@ CREATE TABLE attraction(
    heureOuv TIME,
    heureFerm TIME,
    idParc int(3) NOT NULL,
-   idTechnicien int(3) NOT NULL,
+   iduser int(3) NOT NULL,
    PRIMARY KEY(idAttraction),
-   FOREIGN KEY(idTechnicien) REFERENCES technicien(idTechnicien),
+   FOREIGN KEY(iduser) REFERENCES technicien(iduser),
    FOREIGN KEY(idParc) REFERENCES parc(idParc)
 );
 
@@ -80,17 +89,17 @@ CREATE TABLE restaurant(
    affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    type enum ("Service à Table", "Restauration à Emporter"),
    capacite int(5),
-   idRestaurateur int(3) NOT NULL,
+   iduser int(3) NOT NULL,
    PRIMARY KEY(idRestaurant),
-   FOREIGN KEY(idRestaurateur) REFERENCES restaurateur(idRestaurateur)
+   FOREIGN KEY(iduser) REFERENCES restaurateur(iduser)
 );
 
 CREATE TABLE commande(
    idCommande int(3) not null auto_increment,
    prix int(5),
-   idClient int(3) NOT NULL,
+   iduser int(3) NOT NULL,
    PRIMARY KEY(idCommande),
-   FOREIGN KEY(idClient) REFERENCES client(idClient)
+   FOREIGN KEY(iduser) REFERENCES client(iduser)
 );
 
 CREATE TABLE Reserver1(
@@ -122,11 +131,31 @@ CREATE TABLE Reserver3(
 );
 
 
+
+-- les PROCEDURES STOCKEES --
+delimiter $
+create procedure insertTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50),
+				IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), 
+             IN p_qualification varchar(50), IN p_dateentree date)
+begin
+	declare p_iduser int (3);
+
+	insert into user values(null, p_nom, p_prenom, p_adresse, p_email, p_mdp, p_tel, p_role);
+	select iduser into p_iduser
+	from user
+	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
+	insert into technicien values(p_iduser, p_qualification, p_dateentree);
+end $
+delimiter ;
+
+
+
 insert into parc values (null, "Parc Disneyland", 28000, 34, 14);
 
 insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
 
-insert into technicien values (null, "Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "0606060606", "Ingénieur son", "te");
+call insertTechnicien ("Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "123", "0606060606",
+"technicien",  "Ingénieur son", "2000-12-12");
 
 insert into technicien values (null, "te", "te", "te", "te", "te", "te", "te");
 

@@ -414,15 +414,17 @@
 		/****************************** TECHNICIENS *******************************************/
 
 		public function insertTechnicien($tab){
-			$requete = "insert into technicien values (null, :nom, :prenom, :adresse, :email, :tel, :qualification, :mdp)";
+			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email,:mdp,  :tel, 'technicien', 
+			:qualification, :dateentree)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
 				":email"=>$tab['email'],
+				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":mdp"=>$tab['mdp'],
+				":dateentree"=>$tab['dateentree'],
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
