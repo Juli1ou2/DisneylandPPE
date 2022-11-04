@@ -23,8 +23,8 @@
 		<header>
 			<div id="en-tete">
 				<div id="titre_menu">
-					<a href="index.php?page=0"><img src="images/logo.png" width="215" height="61"></a>
-					<h1>PROGRAMMATION DE PARCOURS</h1>
+					<a href="index.php?page=0"><img src="images/logo.png" width="136.5" height="39.5"></a>
+					<!-- <h1>Programmation de Parcours</h1> -->
 				</div>
 				<div id="menu">
 					<!--<a href="index.php?page=0"><img src="images/home.png" height="90" width="90"></a>-->
@@ -42,12 +42,13 @@
 					<?php if(isset($_SESSION['email'])){
 						echo '<a href="index.php?page=7"><h3>COMMANDES</h3></a>';
 					} ?>
-					<?php if (! isset($_SESSION['email'])){
-						echo '<a href="index.php?page=8"><h3>Connexion</h3></a>';
-					} else{
-						echo '<a href="index.php?page=8"><h3>Déconnexion</h3></a>';
-					} ?>
 				</div>
+				<?php
+					if (! isset($_SESSION['email'])){
+						echo '<a href="index.php?page=8"><h4 class="bloc_connexion">Connexion</h4></a>';
+					} else{
+						echo '<a href="index.php?page=8"><h4 class="bloc_connexion">Déconnexion</h4></a>';
+					} ?>
 			</div>
 		</header>
 

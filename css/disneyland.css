@@ -3,6 +3,14 @@
 /* POLICES PERSONNALISEES */
 
 @font-face{
+	font-family: 'Aileron-Light-webfont';
+	src: url('fonts/Aileron-Light-webfont.eot');
+	src: url('fonts/Aileron-Light-webfont.ttf');
+	src: url('fonts/Aileron-Light-webfont.svg');
+	src: url('fonts/Aileron-Light-webfont.woff');
+}
+
+@font-face{
 	font-family: 'Aileron-Regular-webfont';
 	src: url('fonts/Aileron-Regular-webfont.eot');
 	src: url('fonts/Aileron-Regular-webfont.ttf');
@@ -31,7 +39,7 @@
 body{
 	margin: auto;
 	padding:  0px;
-	font-family: Aileron-Regular-webfont, arial, sans-serif;
+	font-family: Aileron-Light-webfont, arial, sans-serif;
 	background-color: #f5f5f5;
 }
 
@@ -103,9 +111,10 @@ header {
 	background-color: #ededed;
 	color: black;
 	margin-bottom: 30px;
-	padding: 20px;
+	padding: 20px 20px 3px 20px;
 	border-bottom: 1px solid #213f8eff;
 	font-family: Aileron-Regular-webfont;
+	letter-spacing: .05em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -116,8 +125,32 @@ header h1{
 	color: #213f8eff;
 }
 
+.bloc_connexion{
+	position: absolute;
+    right: 30px;
+    top: 10px;
+    z-index: 1;
+	border: 1px solid #213f8eff;
+	border-radius: 25px;
+	padding: 5px;
+	color: black;
+}
+
+.bloc_connexion:hover{
+	border: 2px solid #213f8eff;
+	color: black;
+}
+
+.bloc_connexion:visited{
+	color: black;
+}
+
+.bloc_connexion:active{
+	color: black;
+}
+
 #en-tete{
-	width: 75%;
+	width: max-content;
 }
 
 #titre_menu{
@@ -129,6 +162,7 @@ header h1{
 }
 
 #menu{
+	width: max-content;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -149,7 +183,7 @@ header h1{
 }
 
 #menu a:hover{
-	border-bottom: 4px solid #025bffff;
+	border-bottom: 2px solid #025bffff;
 	border-radius: 75px / 25px;
 }
 
