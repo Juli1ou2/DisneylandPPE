@@ -26,17 +26,18 @@ CREATE TABLE technicien(
 
 CREATE TABLE client(
    iduser int(3) not null ,
-   statut  VARCHAR(50),
-   datenaissance date,
+   fidelite  int(3),
+   dateNaissance date,
    promotion float, 
    PRIMARY KEY(iduser), 
    foreign key (iduser) references user(iduser)
 );
 
+
 CREATE TABLE restaurateur(
    iduser int(3) not null ,
    qualification VARCHAR(50),
-   anciennte varchar (30),
+   anciennete varchar (30),
    PRIMARY KEY(iduser), 
    foreign key (iduser) references user(iduser)
 );
@@ -130,13 +131,15 @@ CREATE TABLE Reserver3(
    FOREIGN KEY(idCommande) REFERENCES commande(idCommande)
 );
 
+-- les VUES --
 
+create view selectAllTechniciens
+as 
+select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.tel, t.qualification, t.dateentree from user u, technicien t where u.iduser = t.iduser;
 
 -- les PROCEDURES STOCKEES --
 delimiter $
-create procedure insertTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50),
-				IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), 
-             IN p_qualification varchar(50), IN p_dateentree date)
+create procedure insertTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date)
 begin
 	declare p_iduser int (3);
 
@@ -148,20 +151,64 @@ begin
 end $
 delimiter ;
 
+delimiter $
+create procedure insertRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30))
+begin
+	declare p_iduser int (3);
+
+	insert into user values(null, p_nom, p_prenom, p_adresse, p_email, p_mdp, p_tel, p_role);
+	select iduser into p_iduser
+	from user
+	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
+	insert into restaurateur values(p_iduser, p_qualification, p_anciennete);
+end $
+delimiter ;
+
+
+delimiter $
+create procedure insertClient (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
+ IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_fidelite int(3), IN p_dateNaissance date,
+  IN p_promotion float)
+begin
+	declare p_iduser int (3);
+
+	insert into user values(null, p_nom, p_prenom, p_adresse, p_email, p_mdp, p_tel, p_role);
+	select iduser into p_iduser
+	from user
+	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
+	insert into client values(p_iduser, p_fidelite, p_dateNaissance, p_promotion);
+end $
+delimiter ;
+
+
+call insertClient ("Ben Ahmed", "Okacha", "12 rue de Cléry", "O.ben-ahmed@cfa-insta.fr", "123", "0123456789", "client", 0, "1990-01-01", 1);
+
+
+call insertTechnicien ("Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "123", "0606060606",
+"technicien",  "Ingénieur son", "2000-12-12");
+
+call insertTechnicien ("Zeboudj", "Mouhamed", "10 rue de Disney", " mz@gmail.com", "456", "0607070707", "technicien ",
+ "technicien plateau", "2004-07-04");
+
+call insertTechnicien ("Da Costa", "Lucas", "9 rue du repas", "ld@gmail.com", "789" ,"0707070707","technicien",
+ "Technicien lumiere", "1994-02-08");
+
+
+call insertRestaurateur ("Da Costa", "Lucas", "9 rue du repas", "ldacosta7797@gmail.com", "cuistot", "0707070707", "restaurateur",
+ "Chef cuisinier", "8 ans");
+
+call insertRestaurateur ("Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "commis", "0607070707", "restaurateur",
+ "Commis de cuisine", "2 ans");
+
+call insertRestaurateur ("Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "commis", "0606060606","restaurateur",
+ "Commis de cuisine" , "6 mois");
 
 
 insert into parc values (null, "Parc Disneyland", 28000, 34, 14);
 
 insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
 
-call insertTechnicien ("Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "123", "0606060606",
-"technicien",  "Ingénieur son", "2000-12-12");
-
-insert into technicien values (null, "te", "te", "te", "te", "te", "te", "te");
-
-insert into technicien values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mz@gmail.com", "0607070707", "technicien plateau", "te");
-
-insert into technicien values ( null, "Da Costa", "Lucas", "9 rue du repas", "ld@gmail.com", "0707070707", "Technicien lumiere", "te");
+insert into user values (null, "admin", "admin", "admin", "admin", "admin", "admin");
 
 
 insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", 1, 1);
@@ -183,15 +230,6 @@ insert into attraction values (null, "Ratatouille : L'aventure Totalement Toqué
 insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2 );
 
 insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 1 );
-
-
-
-insert into restaurateur values ( null, "Da Costa", "Lucas", "9 rue du repas", "ldacosta7797@gmail.com", "0707070707", "Chef cuisinier");
-
-insert into restaurateur values (null, "Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "0607070707", "Commis de cuisine" ) ;
-
-insert into restaurateur values (null, "Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "0606060606", "Commis de cuisine" ) ;
-
 
 
 insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 1 );
