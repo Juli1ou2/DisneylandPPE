@@ -11,7 +11,7 @@
 <p>Bienvenue sur le site du parc à thème Disneyland Paris !<br/><br/><br/></p>
 
 <!-- <img src="images/disneyland1.jpg" height="934" width="1229"> -->
-<img src="images/disneyland2.jpg" height="800" width="1920">
+<img src="images/disneyland2.jpg" height="100%" width="100%">
 <br/><br/><br/>
 
 <?php
