@@ -20,6 +20,10 @@
 				<td><input type="text" name="email" value="<?= ($leTechnicien != null) ? $leTechnicien['email'] : ""?>"></td>
 			</tr>
 			<tr>
+				<td>Mot de passe</td>
+				<td><input type="password" name="mdp" value="<?= ($leTechnicien != null) ? $leTechnicien['mdp'] : ""?>"></td>
+			</tr>
+			<tr>
 				<td>Téléphone</td>
 				<td><input type="text" name="tel" value="<?= ($leTechnicien != null) ? $leTechnicien['tel'] : ""?>"></td>
 			</tr>
@@ -28,9 +32,10 @@
 				<td><input type="text" name="qualification" value="<?= ($leTechnicien != null) ? $leTechnicien['qualification'] : ""?>"></td>
 			</tr>
 			<tr>
-				<td>Mot de passe</td>
-				<td><input type="password" name="mdp" value="<?= ($leTechnicien != null) ? $leTechnicien['mdp'] : ""?>"></td>
+				<td>Date d'entrée</td>
+				<td><input type="date" name="dateentree" value="<?= ($leTechnicien != null) ? $leTechnicien['dateentree'] : ""?>"></td>
 			</tr>
+
 			<tr>
 				<td></td>
 				<td><input type="reset" name="Annuler" value="Annuler">

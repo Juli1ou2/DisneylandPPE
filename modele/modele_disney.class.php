@@ -216,14 +216,16 @@
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
-			$requete = "insert into restaurateur values (null, :nom, :prenom, :adresse, :mail, :tel, :qualification)";
+			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
 				":mail"=>$tab['mail'],
+				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
-				":qualification"=>$tab['qualification']
+				":qualification"=>$tab['qualification'],
+				":anciennete"=>$tab['anciennete'],
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -414,7 +416,7 @@
 		/****************************** TECHNICIENS *******************************************/
 
 		public function insertTechnicien($tab){
-			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email,:mdp,  :tel, 'technicien', 
+			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', 
 			:qualification, :dateentree)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
@@ -434,7 +436,7 @@
 		}
 
 		public function selectAllTechniciens(){
-			$requete = "select * from technicien";
+			$requete = "select * from selectAllTechniciens";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -624,13 +626,17 @@
 		/****************************** CLIENTS *******************************************/
 
 		public function insertClient($tab){
-			$requete = "insert into client values (null, :nom, :prenom, :email, :tel, :mdp)";
+			$requete = "call insertClient (:nom, :prenom, :adresse, :email, :mdp,  :tel, :fidelite, :dateNaissance, :promotion)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
+				":adresse"=>$tab['adresse'],
 				":email"=>$tab['email'],
-				":tel"=>$tab['tel'],
 				":mdp"=>$tab['mdp'],
+				":tel"=>$tab['tel'],
+				":fidelite"=>$tab['fidelite'],
+				":dateNaissance"=>$tab['dateNaissance'],
+				":promotion"=>$tab['promotion'],
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
