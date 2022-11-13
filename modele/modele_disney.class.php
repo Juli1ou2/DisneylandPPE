@@ -870,21 +870,14 @@
 		/****************************** USERS *******************************************/
 
 		public function selectUser($email, $mdp){
-			$requete_client = "select * from client where email ='".$email."' and mdp ='".$mdp."'; " ;
-			echo $requete_client;
+			$requete = "select * from user where email ='".$email."' and mdp ='".$mdp."'; " ;
 			if ($this->pdo != null){
-				$select_client = $this->pdo->prepare($requete_client);
+				$select_client = $this->pdo->prepare($requete);
 				$select_client->execute();
-				$unUser = $select_client->fetch(); 
-				if ($unUser == null){
-					$requete_technicien = "select * from technicien where email ='".$email."' and mdp ='".$mdp."'; " ;
-					echo $requete_technicien;
-					$select_technicien = $this->pdo->prepare($requete_technicien);
-					$select_technicien->execute();
-					$unUser = $select_technicien->fetch(); 
-				}
+				return $select_client->fetch(); 
+			} else {
+				return null;
 			}
-			return $unUser; 
 		}
 	}
 ?>

@@ -1,7 +1,7 @@
 <?php
 	$leTechnicien = null;
 
-	if (isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
 		if (isset($_GET['action']) and isset($_GET['idTechnicien'])){
 			$action = $_GET['action'];
 			$idTechnicien = $_GET['idTechnicien'];

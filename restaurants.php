@@ -2,7 +2,7 @@
 	$leRestaurant = null;
 	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
 
-	if (isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
 		if (isset($_GET['action']) and isset($_GET['idRestaurant'])){
 			$action = $_GET['action'];
 			$idRestaurant = $_GET['idRestaurant'];
