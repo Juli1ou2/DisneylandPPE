@@ -17,11 +17,13 @@
 				<th>Prénom</th>
 				<th>Adresse</th>
 				<th>Mail</th>
-				<th>Mot de passe</th>
+				<?php if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
+					echo "<th>Mot de passe</th>";
+				} ?>
 				<th>Téléphone</th>
 				<th>Qualification</th>
 				<th>Date d'Entrée</th>
-				<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				<?php if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
 					echo '<th>Opérations</th>';
 				} ?>
 			</tr>
@@ -34,13 +36,13 @@
 				<td>".$unTechnicien['prenom']."</td>
 				<td>".$unTechnicien['adresse']."</td>
 				<td>".$unTechnicien['email']."</td>";
-				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
 					echo "<td>".$unTechnicien['mdp']."</td>";
 				}
 				echo "<td>".$unTechnicien['tel']."</td>
 				<td>".$unTechnicien['qualification']."</td>
 				<td>".$unTechnicien['dateentree']."</td>";
-				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
 					echo "<td><a href='index.php?page=3&action=edit&idTechnicien=".$unTechnicien['iduser']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=3&action=sup&idTechnicien=".$unTechnicien['iduser']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}

@@ -153,14 +153,6 @@ end $
 delimiter ;
 
 delimiter $
-create procedure deleteTechnicien(IN p_iduser int(3))
-begin
-   delete from technicien where iduser = p_iduser;
-	delete from user where iduser = p_iduser;
-end$
-delimiter ;
-
-delimiter $
 create procedure insertRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30))
 begin
 	declare p_iduser int (3);
@@ -196,7 +188,7 @@ call insertClient ("Ben Ahmed", "Okacha", "12 rue de Cléry", "O.ben-ahmed@cfa-i
 call insertTechnicien ("Morisseau", "Julien", "8 rue du CSS", "jm@gmail.com", "123", "0606060606",
 "technicien",  "Ingénieur son", "2000-12-12");
 
-call insertTechnicien ("Zeboudj", "Mouhamed", "10 rue de Disney", " mz@gmail.com", "456", "0607070707", "technicien ",
+call insertTechnicien ("Zeboudj", "Mouhamed", "10 rue de Disney", "mz@gmail.com", "456", "0607070707", "technicien ",
  "technicien plateau", "2004-07-04");
 
 call insertTechnicien ("Da Costa", "Lucas", "9 rue du repas", "ld@gmail.com", "789" ,"0707070707","technicien",
@@ -206,10 +198,10 @@ call insertTechnicien ("Da Costa", "Lucas", "9 rue du repas", "ld@gmail.com", "7
 call insertRestaurateur ("Da Costa", "Lucas", "9 rue du repas", "ldacosta7797@gmail.com", "cuistot", "0707070707", "restaurateur",
  "Chef cuisinier", "8 ans");
 
-call insertRestaurateur ("Zeboudj", "Mouhamed", "10 rue de Disney", " mohamedzeboudj@gmail.com", "commis", "0607070707", "restaurateur",
+call insertRestaurateur ("Zeboudj", "Mouhamed", "10 rue de Disney", "mohamedzeboudj@gmail.com", "commis", "0607070707", "restaurateur",
  "Commis de cuisine", "2 ans");
 
-call insertRestaurateur ("Morisseau", "Julien", "8 rue du CSS", " julienmorisseau@gmail.com", "commis", "0606060606","restaurateur",
+call insertRestaurateur ("Morisseau", "Julien", "8 rue du CSS", "julienmorisseau@gmail.com", "commis", "0606060606","restaurateur",
  "Commis de cuisine" , "6 mois");
 
 
@@ -217,7 +209,7 @@ insert into parc values (null, "Parc Disneyland", 28000, 34, 14);
 
 insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
 
-insert into user values (null, "admin", "admin", "admin", "admin", "admin", "admin");
+insert into user values (null, "admin", "admin", "admin", "admin", "admin", "admin", "admin");
 
 
 insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", 1, 1);

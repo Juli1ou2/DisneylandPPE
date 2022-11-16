@@ -3,7 +3,7 @@
 	$lesParcs = $unControleur->selectAllParcs();
 	$lesTechniciens = $unControleur->selectAllTechniciens();
 
-	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
+	if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
 		if (isset($_GET['action']) and isset($_GET['idAttraction'])){
 			$action = $_GET['action'];
 			$idAttraction = $_GET['idAttraction'];

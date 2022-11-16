@@ -64,12 +64,12 @@
 				case 1 : require_once("parcs.php"); break;
 				case 2 : require_once("attractions.php"); break;
 				case 3 : 
-				if(isset($_SESSION['email']) and $_SESSION['role']=='technicien'){
+					if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
 					require_once("techniciens.php"); break;
 				}
 				case 4 : require_once("restaurants.php"); break;
 				case 5 : 
-				if(isset($_SESSION['email']) and $_SESSION['role']=='restaurateur'){
+					if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
 					require_once("restaurateurs.php"); break;
 				}
 				case 6 : require_once("transports.php"); break;

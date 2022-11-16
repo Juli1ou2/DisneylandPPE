@@ -23,7 +23,7 @@
 				<th>Heure de fermeture</th>
 				<th>Parc</th>
 				<th>Technicien</th>
-				<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				<?php if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
 					echo '<th>Opérations</th>';
 				} ?>
 			</tr>
@@ -41,8 +41,8 @@
 				<td>".$unAttraction['heureOuv']."</td>
 				<td>".$unAttraction['heureFerm']."</td>
 				<td>".$unAttraction['idParc']."</td>
-				<td>".$unAttraction['idTechnicien']."</td>";
-				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				<td>".$unAttraction['iduser']."</td>";
+				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
 					echo "<td><a href='index.php?page=2&action=edit&idAttraction=".$unAttraction['idAttraction']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=2&action=sup&idAttraction=".$unAttraction['idAttraction']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}
