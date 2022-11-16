@@ -125,27 +125,28 @@ header h1{
 	color: #213f8eff;
 }
 
-.bloc_connexion{
+.bouton_connexion{
 	position: absolute;
-    right: 30px;
-    top: 10px;
+	right: 10px;
+    top: 0px;
+	font-size: smaller;
     z-index: 1;
 	border: 1px solid #213f8eff;
 	border-radius: 25px;
-	padding: 5px;
+	padding: 10px;
 	color: black;
 }
 
-.bloc_connexion:hover{
+.bouton_connexion:hover{
 	border: 2px solid #213f8eff;
 	color: black;
 }
 
-.bloc_connexion:visited{
+.bouton_connexion:visited{
 	color: black;
 }
 
-.bloc_connexion:active{
+.bouton_connexion:active{
 	color: black;
 }
 

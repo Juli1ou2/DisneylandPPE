@@ -1,7 +1,7 @@
 <?php
 	$leTransport = null;
 
-	if (isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
 		if (isset($_GET['action']) and isset($_GET['idTransport'])){
 			$action = $_GET['action'];
 			$idTransport = $_GET['idTransport'];

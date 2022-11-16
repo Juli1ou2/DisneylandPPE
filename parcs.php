@@ -1,7 +1,7 @@
 <?php
 	$leParc = null;
 
-	if (isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
 		if (isset($_GET['action']) and isset($_GET['idParc'])){
 			$action = $_GET['action'];
 			$idParc = $_GET['idParc'];

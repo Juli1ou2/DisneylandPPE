@@ -1,13 +1,5 @@
 <h3>Accueil du site</h3>
 
-<h4>
-	<?php
-		if (isset($_SESSION['email'])){
-				echo $_SESSION['type']." connecté : ".$_SESSION['prenom']." ".$_SESSION['nom'];
-		}
-	?>
-</h4>
-
 <p>Bienvenue sur le site du parc à thème Disneyland Paris !<br/><br/><br/></p>
 
 <!-- <img src="images/disneyland1.jpg" height="934" width="1229"> -->
