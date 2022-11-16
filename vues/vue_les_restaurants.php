@@ -35,7 +35,7 @@
 				<td>".$unRestaurant['affluence']."</td>
 				<td>".$unRestaurant['type']."</td>
 				<td>".$unRestaurant['capacite']."</td>
-				<td>".$unRestaurant['idRestaurateur']."</td>";
+				<td>".$unRestaurant['iduser']."</td>";
 				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
 					echo "<td><a href='index.php?page=4&action=edit&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=4&action=sup&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";

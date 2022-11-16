@@ -35,12 +35,16 @@
 				<td>".$unRestaurateur['nom']."</td>
 				<td>".$unRestaurateur['prenom']."</td>
 				<td>".$unRestaurateur['adresse']."</td>
-				<td>".$unRestaurateur['mail']."</td>
-				<td>".$unRestaurateur['tel']."</td>
-				<td>".$unRestaurateur['qualification']."</td>";
+				<td>".$unRestaurateur['email']."</td>";
 				if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
-					echo "<td><a href='index.php?page=5&action=edit&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/edit.png' height='35' width='35'></a>";
-					echo "<a href='index.php?page=5&action=sup&idRestaurateur=".$unRestaurateur['idRestaurateur']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
+					echo "<td>".$unRestaurateur['mdp']."</td>";
+				}
+				echo "<td>".$unRestaurateur['tel']."</td>
+				<td>".$unRestaurateur['qualification']."</td>
+				<td>".$unRestaurateur['anciennete']."</td>";
+				if(isset($_SESSION['email']) and $_SESSION['role']=='admin'){
+					echo "<td><a href='index.php?page=5&action=edit&idRestaurateur=".$unRestaurateur['iduser']."'><img src='images/edit.png' height='35' width='35'></a>";
+					echo "<a href='index.php?page=5&action=sup&idRestaurateur=".$unRestaurateur['iduser']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}
 				echo "</tr>";
 			}

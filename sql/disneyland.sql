@@ -134,9 +134,13 @@ CREATE TABLE Reserver3(
 -- les VUES --
 
 drop view if exists vueTechniciens;
-create view vueTechniciens
-as 
-select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, t.qualification, t.dateentree from user u, technicien t where u.iduser = t.iduser;
+create view vueTechniciens as (
+select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, t.qualification, t.dateentree from user u, technicien t where u.iduser = t.iduser);
+
+drop view if exists vueRestaurateurs;
+create view vueRestaurateurs as ( 
+select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, r.qualification, r.anciennete from user u, restaurateur r where u.iduser = r.iduser);
+
 
 -- les PROCEDURES STOCKEES --
 delimiter $

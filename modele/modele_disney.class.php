@@ -235,7 +235,7 @@
 		}
 
 		public function selectAllRestaurateurs(){
-			$requete = "select * from restaurateur";
+			$requete = "select * from vueRestaurateurs";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
