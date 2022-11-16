@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<td>Mot de passe</td>
-				<td><input type="password" name="mdp" value="<?= ($leTechnicien != null) ? $leTechnicien['mdp'] : ""?>"></td>
+				<td><input type="text" name="mdp" value="<?= ($leTechnicien != null) ? $leTechnicien['mdp'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>Téléphone</td>
@@ -40,7 +40,7 @@
 				<td></td>
 				<td><input type="reset" name="Annuler" value="Annuler">
 					<input type="submit" <?= ($leTechnicien != null) ? ' name="Modifier" value="Modifier" ' : ' name="Valider" value="Valider" '?> ></td>
-					<?= ($leTechnicien != null) ? "<input type='hidden' name='idTechnicien' value='".$leTechnicien['idTechnicien']."'>" : ""?>
+					<?= ($leTechnicien != null) ? "<input type='hidden' name='idTechnicien' value='".$leTechnicien['iduser']."'>" : ""?>
 			</tr>
 		</table>
 	</form>

@@ -133,9 +133,10 @@ CREATE TABLE Reserver3(
 
 -- les VUES --
 
-create view selectAllTechniciens
+drop view if exists vueTechniciens;
+create view vueTechniciens
 as 
-select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.tel, t.qualification, t.dateentree from user u, technicien t where u.iduser = t.iduser;
+select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, t.qualification, t.dateentree from user u, technicien t where u.iduser = t.iduser;
 
 -- les PROCEDURES STOCKEES --
 delimiter $
@@ -149,6 +150,14 @@ begin
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into technicien values(p_iduser, p_qualification, p_dateentree);
 end $
+delimiter ;
+
+delimiter $
+create procedure deleteTechnicien(IN p_iduser int(3))
+begin
+   delete from technicien where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
 delimiter ;
 
 delimiter $
