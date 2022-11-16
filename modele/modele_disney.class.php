@@ -436,7 +436,7 @@
 		}
 
 		public function selectAllTechniciens(){
-			$requete = "select * from selectAllTechniciens";
+			$requete = "select * from vueTechniciens";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -447,10 +447,10 @@
 			}
 		}
 
-		public function deleteTechnicien($idTechnicien){
-			$requete = "delete from technicien where idTechnicien = :idTechnicien;";
+		public function deleteTechnicien($iduser){
+			$requete = "call deleteTechnicien(:iduser)";
 			$donnees = array(
-				":idTechnicien"=>$idTechnicien);
+				":iduser"=>$iduser);
 			if ($this->pdo != null){
 				//on prépare la requête
 				$delete = $this->pdo->prepare($requete);
@@ -458,10 +458,10 @@
 			}
 		}
 
-		public function selectWhereTechnicien($idTechnicien){
-			$requete = "select * from technicien where idTechnicien = :idTechnicien;";
+		public function selectWhereTechnicien($iduser){
+			$requete = "select * from vueTechniciens where iduser = :iduser;";
 			$donnees = array(
-				":idTechnicien"=>$idTechnicien);
+				":iduser"=>$iduser);
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute($donnees);

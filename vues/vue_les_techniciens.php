@@ -12,11 +12,12 @@
 	<table id="table_affichage">
 		<thead>
 			<tr>
-				<th>ID Technicien</th>
+				<th>ID User</th>
 				<th>Nom</th>
 				<th>Prénom</th>
 				<th>Adresse</th>
 				<th>Mail</th>
+				<th>Mot de passe</th>
 				<th>Téléphone</th>
 				<th>Qualification</th>
 				<th>Date d'Entrée</th>
@@ -32,8 +33,11 @@
 				<td>".$unTechnicien['nom']."</td>
 				<td>".$unTechnicien['prenom']."</td>
 				<td>".$unTechnicien['adresse']."</td>
-				<td>".$unTechnicien['email']."</td>
-				<td>".$unTechnicien['tel']."</td>
+				<td>".$unTechnicien['email']."</td>";
+				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+					echo "<td>".$unTechnicien['mdp']."</td>";
+				}
+				echo "<td>".$unTechnicien['tel']."</td>
 				<td>".$unTechnicien['qualification']."</td>
 				<td>".$unTechnicien['dateentree']."</td>";
 				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
