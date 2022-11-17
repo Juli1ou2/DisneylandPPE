@@ -72,10 +72,10 @@
 			</tr>
 			<tr>
 				<td>Technicien</td>
-				<td><select name="idTechnicien" value="<?php if($leAttraction!=null) echo $leAttraction['idTechnicien'];?>">
+				<td><select name="iduser" value="<?php if($leAttraction!=null) echo $leAttraction['iduser'];?>">
 					<?php
 						foreach ($lesTechniciens as $unTechnicien) {
-							echo "<option value='".$unTechnicien['idTechnicien']."'>";
+							echo "<option value='".$unTechnicien['iduser']."'>";
 							echo $unTechnicien['prenom']." ".$unTechnicien['nom'];
 							echo "</option>";
 						}

@@ -235,7 +235,7 @@
 		}
 
 		public function selectAllRestaurateurs(){
-			$requete = "select * from restaurateur";
+			$requete = "select * from vueRestaurateurs";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -530,7 +530,7 @@
 				":heureOuv"=>$tab['heureOuv'],
 				":heureFerm"=>$tab['heureFerm'],
 				":idParc"=>$tab['idParc'],
-				":idTechnicien"=>$tab['idTechnicien']
+				":idTechnicien"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête

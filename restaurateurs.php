@@ -1,7 +1,7 @@
 <?php
 	$leRestaurateur = null;
 
-	if (isset($_SESSION['email']) and $_SESSION['role']=='Technicien'){
+	if (isset($_SESSION['email']) and $_SESSION['role']=='admin'){
 		if (isset($_GET['action']) and isset($_GET['idRestaurateur'])){
 			$action = $_GET['action'];
 			$idRestaurateur = $_GET['idRestaurateur'];

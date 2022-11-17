@@ -19,10 +19,14 @@
 				<th>Affluence</th>
 				<th>Type</th>
 				<th>Capacité (pers/h)</th>
-				<th>Restaurateur</th>
-				<?php if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
-					echo '<th>Opérations</th>';
-				} ?>
+				<?php
+					if(isset($_SESSION['email'])){
+						echo "<th>Restaurateur</th>";
+					}
+					if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
+						echo '<th>Opérations</th>';
+				}
+				?>
 			</tr>
 		</thead>
 		<?php 
@@ -34,9 +38,12 @@
 				<td>".$unRestaurant['effectifMax']."</td>
 				<td>".$unRestaurant['affluence']."</td>
 				<td>".$unRestaurant['type']."</td>
-				<td>".$unRestaurant['capacite']."</td>
-				<td>".$unRestaurant['idRestaurateur']."</td>";
-				if(isset($_SESSION['email']) and $_SESSION['type']=='Technicien'){
+				<td>".$unRestaurant['capacite']."</td>";
+
+				if(isset($_SESSION['email'])){
+					echo "<td>".$unRestaurant['iduser']."</td>";
+				}
+				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
 					echo "<td><a href='index.php?page=4&action=edit&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=4&action=sup&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}

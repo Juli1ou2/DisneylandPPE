@@ -44,10 +44,10 @@
 			</tr>
 			<tr>
 				<td>Restaurateur</td>
-				<td><select name="idRestaurateur" value="<?php if($leRestaurant!=null) echo $leRestaurant['idRestaurateur'];?>">
+				<td><select name="iduser" value="<?php if($leRestaurant!=null) echo $leRestaurant['iduser'];?>">
 					<?php
 						foreach ($lesRestaurateurs as $unRestaurateur) {
-							echo "<option value='".$unRestaurateur['idRestaurateur']."'>";
+							echo "<option value='".$unRestaurateur['iduser']."'>";
 							echo $unRestaurateur['prenom']." ".$unRestaurateur['nom'];
 							echo "</option>";
 						}
