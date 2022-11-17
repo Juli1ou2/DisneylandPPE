@@ -19,7 +19,7 @@
 				<th>Affluence</th>
 				<th>Horaire (fréquence)</th>
 				<th>Prix</th>
-				<?php if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
+				<?php if(isset($_SESSION['email']) and ($_SESSION['role']=='admin')){
 					echo '<th>Opérations</th>';
 				} ?>
 			</tr>
@@ -34,7 +34,7 @@
 				<td>".$unTransport['affluence']."</td>
 				<td>".$unTransport['horaire']."</td>
 				<td>".$unTransport['prix']."</td>";
-				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
+				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin')){
 					echo "<td><a href='index.php?page=6&action=edit&idTransport=".$unTransport['idTransport']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=6&action=sup&idTransport=".$unTransport['idTransport']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}
