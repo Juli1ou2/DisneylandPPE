@@ -40,7 +40,7 @@
 				<td></td>
 				<td><input type="reset" name="Annuler" value="Annuler">
 					<input type="submit" <?= ($leTechnicien != null) ? ' name="Modifier" value="Modifier" ' : ' name="Valider" value="Valider" '?> ></td>
-					<?= ($leTechnicien != null) ? "<input type='hidden' name='idTechnicien' value='".$leTechnicien['iduser']."'>" : ""?>
+					<?= ($leTechnicien != null) ? "<input type='hidden' name='iduser' value='".$leTechnicien['iduser']."'>" : ""?>
 			</tr>
 		</table>
 	</form>

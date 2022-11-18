@@ -156,6 +156,18 @@ begin
 end $
 delimiter ;
 
+drop procedure if exists updateTechnicien  ;
+delimiter $ 
+
+create procedure updateTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date, IN p_iduser int(3))
+begin 
+   update user set nom = p_nom, prenom = p_prenom, adresse = p_adresse, email = p_email, mdp = p_mdp, tel = p_tel
+   where iduser = p_iduser;
+   update technicien set qualification = p_qualification, dateentree = p_dateentree 
+   where iduser = p_iduser ;
+end $
+delimiter ;
+
 delimiter $
 create procedure insertRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30))
 begin
@@ -168,6 +180,7 @@ begin
 	insert into restaurateur values(p_iduser, p_qualification, p_anciennete);
 end $
 delimiter ;
+
 
 
 delimiter $
