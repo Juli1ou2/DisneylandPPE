@@ -144,6 +144,7 @@ select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, r.qualifica
 
 -- les PROCEDURES STOCKEES --
 delimiter $
+drop procedure if exists insertTechnicien ;
 create procedure insertTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date)
 begin
 	declare p_iduser int (3);
@@ -154,11 +155,15 @@ begin
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into technicien values(p_iduser, p_qualification, p_dateentree);
 end $
-delimiter ;
+
+drop procedure if exists deleteTechnicien ;
+create procedure deleteTechnicien(IN p_iduser int(3))
+begin
+   delete from technicien where iduser = p_iduser;
+    delete from user where iduser = p_iduser;
+end$
 
 drop procedure if exists updateTechnicien  ;
-delimiter $ 
-
 create procedure updateTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date, IN p_iduser int(3))
 begin 
    update user set nom = p_nom, prenom = p_prenom, adresse = p_adresse, email = p_email, mdp = p_mdp, tel = p_tel
@@ -196,6 +201,7 @@ begin
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into client values(p_iduser, p_fidelite, p_dateNaissance, p_promotion);
 end $
+
 delimiter ;
 
 
