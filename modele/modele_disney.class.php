@@ -626,7 +626,7 @@
 		/****************************** CLIENTS *******************************************/
 
 		public function insertClient($tab){
-			$requete = "call insertClient (:nom, :prenom, :adresse, :email, :mdp,  :tel, :fidelite, :dateNaissance, :promotion)";
+			$requete = "call insertClient (:nom, :prenom, :adresse, :email, :mdp,  :tel, 'client', 0, :dateNaissance, 1)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -634,9 +634,9 @@
 				":email"=>$tab['email'],
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
-				":fidelite"=>$tab['fidelite'],
+				// ":fidelite"=>$tab['fidelite'],
 				":dateNaissance"=>$tab['dateNaissance'],
-				":promotion"=>$tab['promotion'],
+				// ":promotion"=>$tab['promotion'],
 			);
 			if ($this->pdo != null){
 				//on prépare la requête

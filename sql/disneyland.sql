@@ -140,6 +140,10 @@ drop view if exists vueRestaurateurs;
 create view vueRestaurateurs as ( 
 select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, r.qualification, r.anciennete from user u, restaurateur r where u.iduser = r.iduser);
 
+drop view if exists vueClients;
+create view vueClients as (
+select u.*, c.fidelite, c.dateNaissance, c.promotion from user u, client c where u.iduser = c.iduser);
+
 
 -- les PROCEDURES STOCKEES --
 delimiter $
