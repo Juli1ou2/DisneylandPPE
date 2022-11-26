@@ -519,7 +519,7 @@
 		/****************************** ATTRACTIONS *******************************************/
 
 		public function insertAttraction($tab){
-			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien)";
+			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -577,7 +577,7 @@
 		}
 
 		public function updateAttraction($tab){
-			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, idTechnicien = :idTechnicien where idAttraction = :idAttraction";
+			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, idTechnicien = :idTechnicien where idAttraction = :idAttraction ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -588,7 +588,7 @@
 				":heureOuv"=>$tab['heureOuv'],
 				":heureFerm"=>$tab['heureFerm'],
 				":idParc"=>$tab['idParc'],
-				":idTechnicien"=>$tab['idTechnicien'],
+				":idTechnicien"=>$tab['iduser'],
 				":idAttraction"=>$tab['idAttraction']
 			);
 			if ($this->pdo != null){
