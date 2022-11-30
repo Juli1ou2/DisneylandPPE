@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<td>Mail</td>
-				<td><input type="text" name="mail" value="<?= ($leRestaurateur != null) ? $leRestaurateur['mail'] : ""?>"></td>
+				<td><input type="text" name="email" value="<?= ($leRestaurateur != null) ? $leRestaurateur['email'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>Mot de passe</td>
@@ -39,7 +39,7 @@
 				<td></td>
 				<td><input type="reset" name="Annuler" value="Annuler">
 					<input type="submit" <?= ($leRestaurateur != null) ? ' name="Modifier" value="Modifier" ' : ' name="Valider" value="Valider" '?> ></td>
-					<?= ($leRestaurateur != null) ? "<input type='hidden' name='idRestaurateur' value='".$leRestaurateur['idRestaurateur']."'>" : ""?>
+					<?= ($leRestaurateur != null) ? "<input type='hidden' name='iduser' value='".$leRestaurateur['iduser']."'>" : ""?>
 			</tr>
 		</table>
 	</form>

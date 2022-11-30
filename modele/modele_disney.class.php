@@ -258,7 +258,7 @@
 		}
 
 		public function selectWhereRestaurateur($idRestaurateur){
-			$requete = "select * from restaurateur where idRestaurateur = :idRestaurateur;";
+			$requete = "select * from vueRestaurateurs where iduser = :idRestaurateur;";
 			$donnees = array(
 				":idRestaurateur"=>$idRestaurateur);
 			if ($this->pdo != null){
@@ -272,12 +272,12 @@
 		}
 
 		public function updateRestaurateur($tab){
-			$requete = "update restaurateur set nom = :nom, prenom = :prenom, adresse = :adresse, mail = :mail, tel = :tel, qualification = :qualification where idRestaurateur = :idRestaurateur";
+			$requete = "update restaurateur set nom = :nom, prenom = :prenom, adresse = :adresse, email = :email, tel = :tel, qualification = :qualification where idRestaurateur = :idRestaurateur";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
-				":mail"=>$tab['mail'],
+				":email"=>$tab['email'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
 				":idRestaurateur"=>$tab['iduser']
@@ -290,10 +290,11 @@
 		}
 
 		public function searchRestaurateur($mot){
-			$requete = "select * from restaurateur where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or mail like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%';";
-			if ($this->pdo != null){
+			$requete = "select * from vueRestaurateurs where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%'
+						or qualification like '%".$mot."%' or anciennete like '%".$mot."%' ;";
+			if ($this->pdo != null){ 
 				$select = $this->pdo->prepare($requete);
-				$select->execute();
+				$select->execute(); 
 				//extraction des Restaurateurs
 				return $select->fetchAll();
 			} else {
@@ -389,7 +390,8 @@
 		}
 
 		public function searchTransport($mot){
-			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or horaire like '%".$mot."%' or prix like '%".$mot."%';";
+			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%'
+						or affluence like '%".$mot."%'or horaire like '%".$mot."%'or prix like '%".$mot."%';";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -491,7 +493,8 @@
 		}
 
 		public function searchTechnicien($mot){
-			$requete = "select * from technicien where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or role like '%".$mot."%';";
+			$requete = "select * from vueTechniciens where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like
+						'%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or dateentree like '%".$mot."%';";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
