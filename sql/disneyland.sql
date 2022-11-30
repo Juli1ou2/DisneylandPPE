@@ -166,7 +166,7 @@ begin
 	delete from user where iduser = p_iduser;
 end$
 delimiter ;
-
+-- ________________________________________________________________________________ --
 delimiter $
 create procedure insertRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30))
 begin
@@ -180,7 +180,14 @@ begin
 end $
 delimiter ;
 
-
+delimiter $
+create procedure deleteRestaurateur(IN p_iduser int(3))
+begin
+   delete from restaurateur where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
+delimiter ;
+-- ________________________________________________________________________________ --
 delimiter $
 create procedure insertClient (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
  IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_fidelite int(3), IN p_dateNaissance date,
@@ -194,6 +201,14 @@ begin
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into client values(p_iduser, p_fidelite, p_dateNaissance, p_promotion);
 end $
+delimiter ;
+
+delimiter $
+create procedure deleteClient(IN p_iduser int(3))
+begin
+   delete from client where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
 delimiter ;
 
 
@@ -261,3 +276,8 @@ insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%",
 insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
 
 insert into transport values (null, "Interparc", "Navette interne", 150, "40%", "00:05", 0.00);
+
+
+select * from vueClients;
+select * from vueTechniciens;
+select * from vueRestaurateurs;

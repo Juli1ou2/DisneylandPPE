@@ -20,12 +20,20 @@
 				<td><input type="text" name="mail" value="<?= ($leRestaurateur != null) ? $leRestaurateur['mail'] : ""?>"></td>
 			</tr>
 			<tr>
+				<td>Mot de passe</td>
+				<td><input type="password" name="mdp" value="<?= ($leRestaurateur != null) ? $leRestaurateur['mdp'] : ""?>"></td>
+			</tr>
+			<tr>
 				<td>Téléphone</td>
 				<td><input type="text" name="tel" value="<?= ($leRestaurateur != null) ? $leRestaurateur['tel'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td>Qualification</td>
 				<td><input type="text" name="qualification" value="<?= ($leRestaurateur != null) ? $leRestaurateur['qualification'] : ""?>"></td>
+			</tr>
+			<tr>
+				<td>Ancienneté</td>
+				<td><input type="text" name="anciennete" value="<?= ($leRestaurateur != null) ? $leRestaurateur['anciennete'] : ""?>"></td>
 			</tr>
 			<tr>
 				<td></td>

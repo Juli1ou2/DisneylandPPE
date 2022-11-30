@@ -123,7 +123,7 @@
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
 				":capacite"=>$tab['capacite'],
-				":idRestaurateur"=>$tab['idRestaurateur']
+				":idRestaurateur"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -170,7 +170,7 @@
 		}
 
 		public function updateRestaurant($tab){
-			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type, capacite = :capacite, idRestaurateur = :idRestaurateur where idRestaurant = :idRestaurant";
+			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type, capacite = :capacite, iduser = :idRestaurateur where idRestaurant = :idRestaurant";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -178,7 +178,7 @@
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
 				":capacite"=>$tab['capacite'],
-				":idRestaurateur"=>$tab['idRestaurateur'],
+				":idRestaurateur"=>$tab['iduser'],
 				":idRestaurant"=>$tab['idRestaurant']
 			);
 			if ($this->pdo != null){
@@ -216,7 +216,7 @@
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
-			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete)";
+			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -247,7 +247,7 @@
 		}
 
 		public function deleteRestaurateur($idRestaurateur){
-			$requete = "delete from restaurateur where idRestaurateur = :idRestaurateur;";
+			$requete = "call deleteRestaurateur (:idRestaurateur);";
 			$donnees = array(
 				":idRestaurateur"=>$idRestaurateur);
 			if ($this->pdo != null){
@@ -280,7 +280,7 @@
 				":mail"=>$tab['mail'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":idRestaurateur"=>$tab['idRestaurateur']
+				":idRestaurateur"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -416,8 +416,7 @@
 		/****************************** TECHNICIENS *******************************************/
 
 		public function insertTechnicien($tab){
-			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', 
-			:qualification, :dateentree)";
+			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', :qualification, :dateentree)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -577,7 +576,7 @@
 		}
 
 		public function updateAttraction($tab){
-			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, idTechnicien = :idTechnicien where idAttraction = :idAttraction ;";
+			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, iduser = :iduser where idAttraction = :idAttraction ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -588,7 +587,7 @@
 				":heureOuv"=>$tab['heureOuv'],
 				":heureFerm"=>$tab['heureFerm'],
 				":idParc"=>$tab['idParc'],
-				":idTechnicien"=>$tab['iduser'],
+				":iduser"=>$tab['iduser'],
 				":idAttraction"=>$tab['idAttraction']
 			);
 			if ($this->pdo != null){
