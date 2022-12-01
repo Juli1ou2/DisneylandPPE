@@ -272,15 +272,17 @@
 		}
 
 		public function updateRestaurateur($tab){
-			$requete = "update restaurateur set nom = :nom, prenom = :prenom, adresse = :adresse, email = :email, tel = :tel, qualification = :qualification where idRestaurateur = :idRestaurateur";
+			$requete = "call updateRestaurateur (:nom, :prenom, :adresse, :email, :mdp, :tel, :qualification, :anciennete, :iduser) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
 				":email"=>$tab['email'],
+				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":idRestaurateur"=>$tab['iduser']
+				":anciennete"=>$tab['anciennete'],
+				":iduser"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête

@@ -187,6 +187,15 @@ begin
 	delete from user where iduser = p_iduser;
 end$
 delimiter ;
+
+delimiter $
+create procedure updateRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
+IN p_mdp varchar(50),  IN p_tel varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30), IN p_iduser int(3))
+begin
+	update user set nom=p_nom, prenom=p_prenom, adresse=p_adresse, email=p_email, mdp=p_mdp, tel=p_tel where iduser = p_iduser;
+	update restaurateur set qualification=p_qualification, anciennete=p_anciennete where iduser=p_iduser;
+end $
+delimiter ;
 -- ________________________________________________________________________________ --
 delimiter $
 create procedure insertClient (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
