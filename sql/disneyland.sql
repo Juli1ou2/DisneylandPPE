@@ -33,7 +33,6 @@ CREATE TABLE client(
    foreign key (iduser) references user(iduser)
 );
 
-
 CREATE TABLE restaurateur(
    iduser int(3) not null ,
    qualification VARCHAR(50),
@@ -141,6 +140,10 @@ drop view if exists vueRestaurateurs;
 create view vueRestaurateurs as ( 
 select u.iduser,  u.nom, u.prenom, u.adresse, u.email, u.mdp, u.tel, r.qualification, r.anciennete from user u, restaurateur r where u.iduser = r.iduser);
 
+drop view if exists vueClients;
+create view vueClients as (
+select u.*, c.fidelite, c.dateNaissance, c.promotion from user u, client c where u.iduser = c.iduser);
+
 
 -- les PROCEDURES STOCKEES --
 delimiter $
@@ -174,6 +177,14 @@ end $
 delimiter ;
 
 delimiter $
+create procedure deleteTechnicien(IN p_iduser int(3))
+begin
+   delete from technicien where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
+delimiter ;
+-- ________________________________________________________________________________ --
+delimiter $
 create procedure insertRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30))
 begin
 	declare p_iduser int (3);
@@ -186,8 +197,24 @@ begin
 end $
 delimiter ;
 
+delimiter $
+create procedure deleteRestaurateur(IN p_iduser int(3))
+begin
+   delete from restaurateur where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
+delimiter ;
 
 
+delimiter $
+create procedure updateRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
+IN p_mdp varchar(50),  IN p_tel varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30), IN p_iduser int(3))
+begin
+	update user set nom=p_nom, prenom=p_prenom, adresse=p_adresse, email=p_email, mdp=p_mdp, tel=p_tel where iduser = p_iduser;
+	update restaurateur set qualification=p_qualification, anciennete=p_anciennete where iduser=p_iduser;
+end $
+delimiter ;
+-- ________________________________________________________________________________ --
 delimiter $
 create procedure insertClient (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
  IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_fidelite int(3), IN p_dateNaissance date,
@@ -202,6 +229,14 @@ begin
 	insert into client values(p_iduser, p_fidelite, p_dateNaissance, p_promotion);
 end $
 
+delimiter ;
+
+delimiter $
+create procedure deleteClient(IN p_iduser int(3))
+begin
+   delete from client where iduser = p_iduser;
+	delete from user where iduser = p_iduser;
+end$
 delimiter ;
 
 
@@ -237,7 +272,7 @@ insert into user values (null, "admin", "admin", "admin", "admin", "admin", "adm
 
 insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", 1, 2);
 
-insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe", 1800, "40%", 20, "09:00", "19:00", 1, 3);
+insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe", 1800, "40%", 20, "09:00", "19:00", 1, 4);
 
 insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride", 2400, "70%", 15, "09:00", "19:00", 1, 2);
 
@@ -245,13 +280,14 @@ insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500
 
 insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
-insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 4);
 
 insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00", 2, 3 );
 
-insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00", 2, 3 );
+insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00", 2, 2);
 
-insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2 );
+insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2);
+
 
 insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 3 );
 
@@ -266,6 +302,12 @@ insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%",
 
 
 
+
 insert into transport values (null, "RER A", "Transport externe", 2600, "40%", "00:15", 5.20);
 
 insert into transport values (null, "Interparc", "Navette interne", 150, "40%", "00:05", 0.00);
+
+
+select * from vueClients;
+select * from vueTechniciens;
+select * from vueRestaurateurs;

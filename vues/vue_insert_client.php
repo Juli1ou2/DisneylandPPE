@@ -16,6 +16,14 @@
 				<td><input type="text" name="email" value=""></td>
 			</tr>
 			<tr>
+				<td>Adresse</td>
+				<td><input type="text" name="adresse" value=""></td>
+			</tr>
+			<tr>
+				<td>Date de naissance</td>
+				<td><input type="date" name="dateNaissance" value=""></td>
+			</tr>
+			<tr>
 				<td>Téléphone</td>
 				<td><input type="text" name="tel" value=""></td>
 			</tr>

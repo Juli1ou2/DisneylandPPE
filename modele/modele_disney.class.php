@@ -123,7 +123,7 @@
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
 				":capacite"=>$tab['capacite'],
-				":idRestaurateur"=>$tab['idRestaurateur']
+				":idRestaurateur"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -170,7 +170,7 @@
 		}
 
 		public function updateRestaurant($tab){
-			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type, capacite = :capacite, idRestaurateur = :idRestaurateur where idRestaurant = :idRestaurant";
+			$requete = "update restaurant set nom = :nom, theme = :theme, effectifMax = :effectifMax, affluence = :affluence, type = :type, capacite = :capacite, iduser = :idRestaurateur where idRestaurant = :idRestaurant";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -178,7 +178,7 @@
 				":affluence"=>$tab['affluence'],
 				":type"=>$tab['type'],
 				":capacite"=>$tab['capacite'],
-				":idRestaurateur"=>$tab['idRestaurateur'],
+				":idRestaurateur"=>$tab['iduser'],
 				":idRestaurant"=>$tab['idRestaurant']
 			);
 			if ($this->pdo != null){
@@ -216,7 +216,7 @@
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
-			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete)";
+			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -247,7 +247,7 @@
 		}
 
 		public function deleteRestaurateur($idRestaurateur){
-			$requete = "delete from restaurateur where idRestaurateur = :idRestaurateur;";
+			$requete = "call deleteRestaurateur (:idRestaurateur);";
 			$donnees = array(
 				":idRestaurateur"=>$idRestaurateur);
 			if ($this->pdo != null){
@@ -258,7 +258,7 @@
 		}
 
 		public function selectWhereRestaurateur($idRestaurateur){
-			$requete = "select * from restaurateur where idRestaurateur = :idRestaurateur;";
+			$requete = "select * from vueRestaurateurs where iduser = :idRestaurateur;";
 			$donnees = array(
 				":idRestaurateur"=>$idRestaurateur);
 			if ($this->pdo != null){
@@ -272,15 +272,17 @@
 		}
 
 		public function updateRestaurateur($tab){
-			$requete = "update restaurateur set nom = :nom, prenom = :prenom, adresse = :adresse, mail = :mail, tel = :tel, qualification = :qualification where idRestaurateur = :idRestaurateur";
+			$requete = "call updateRestaurateur (:nom, :prenom, :adresse, :email, :mdp, :tel, :qualification, :anciennete, :iduser) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
-				":mail"=>$tab['mail'],
+				":email"=>$tab['email'],
+				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":idRestaurateur"=>$tab['idRestaurateur']
+				":anciennete"=>$tab['anciennete'],
+				":iduser"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -290,10 +292,11 @@
 		}
 
 		public function searchRestaurateur($mot){
-			$requete = "select * from restaurateur where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or mail like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%';";
-			if ($this->pdo != null){
+			$requete = "select * from vueRestaurateurs where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%'
+						or qualification like '%".$mot."%' or anciennete like '%".$mot."%' ;";
+			if ($this->pdo != null){ 
 				$select = $this->pdo->prepare($requete);
-				$select->execute();
+				$select->execute(); 
 				//extraction des Restaurateurs
 				return $select->fetchAll();
 			} else {
@@ -389,7 +392,8 @@
 		}
 
 		public function searchTransport($mot){
-			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%' or affluence like '%".$mot."%' or horaire like '%".$mot."%' or prix like '%".$mot."%';";
+			$requete = "select * from transport where libelle like'%".$mot."%' or type like '%".$mot."%' or capacite like '%".$mot."%'
+						or affluence like '%".$mot."%'or horaire like '%".$mot."%'or prix like '%".$mot."%';";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -416,8 +420,7 @@
 		/****************************** TECHNICIENS *******************************************/
 
 		public function insertTechnicien($tab){
-			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', 
-			:qualification, :dateentree)";
+			$requete = "call insertTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', :qualification, :dateentree)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -494,7 +497,8 @@
 		}
 
 		public function searchTechnicien($mot){
-			$requete = "select * from technicien where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like '%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or role like '%".$mot."%';";
+			$requete = "select * from vueTechniciens where nom like'%".$mot."%' or prenom like '%".$mot."%' or adresse like '%".$mot."%' or email like
+						'%".$mot."%' or tel like '%".$mot."%' or qualification like '%".$mot."%' or dateentree like '%".$mot."%';";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
@@ -521,7 +525,7 @@
 		/****************************** ATTRACTIONS *******************************************/
 
 		public function insertAttraction($tab){
-			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien)";
+			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -579,7 +583,7 @@
 		}
 
 		public function updateAttraction($tab){
-			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, idTechnicien = :idTechnicien where idAttraction = :idAttraction";
+			$requete = "update attraction set nom = :nom, status = :status, type = :type, capacite = :capacite, affluence = :affluence, prix = :prix, heureOuv = :heureOuv, heureFerm = :heureFerm, idParc = :idParc, iduser = :iduser where idAttraction = :idAttraction ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -590,7 +594,7 @@
 				":heureOuv"=>$tab['heureOuv'],
 				":heureFerm"=>$tab['heureFerm'],
 				":idParc"=>$tab['idParc'],
-				":idTechnicien"=>$tab['idTechnicien'],
+				":iduser"=>$tab['iduser'],
 				":idAttraction"=>$tab['idAttraction']
 			);
 			if ($this->pdo != null){
@@ -628,7 +632,7 @@
 		/****************************** CLIENTS *******************************************/
 
 		public function insertClient($tab){
-			$requete = "call insertClient (:nom, :prenom, :adresse, :email, :mdp,  :tel, :fidelite, :dateNaissance, :promotion)";
+			$requete = "call insertClient (:nom, :prenom, :adresse, :email, :mdp,  :tel, 'client', 0, :dateNaissance, 1)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
@@ -636,9 +640,9 @@
 				":email"=>$tab['email'],
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
-				":fidelite"=>$tab['fidelite'],
+				// ":fidelite"=>$tab['fidelite'],
 				":dateNaissance"=>$tab['dateNaissance'],
-				":promotion"=>$tab['promotion'],
+				// ":promotion"=>$tab['promotion'],
 			);
 			if ($this->pdo != null){
 				//on prépare la requête

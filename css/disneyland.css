@@ -48,6 +48,7 @@ body{
 	box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 	margin: 20px;
 	border:  2px solid black;
+	/* width: fit-content; */
 }
 
 #table_affichage th{
@@ -72,12 +73,13 @@ body{
 }
 
 #bloc{
-	width: max-content;
+	width: fit-content;
 	padding: 5px;
 	margin: auto;
 	background-color: #f8f8f8;
 	border-radius: 25px;
 	box-shadow: 0 15px 23px rgba(0,0,0,0.15);
+	overflow-block: scroll;
 }
 
 #grand_bloc{
