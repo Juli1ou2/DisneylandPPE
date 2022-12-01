@@ -429,7 +429,7 @@
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":dateentree"=>$tab['dateentree'],
+				":dateentree"=>$tab['dateentree']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête
@@ -476,16 +476,18 @@
 		}
 
 		public function updateTechnicien($tab){
-			$requete = "update technicien set nom = :nom, prenom = :prenom, adresse = :adresse, email = :email, tel = :tel, qualification = :qualification, mdp = :mdp, mdp = :mdp where idTechnicien = :idTechnicien";
+			$requete = "call updateTechnicien (:nom, :prenom, :adresse, :email, :mdp, :tel, 'technicien', 
+			:qualification, :dateentree, :iduser)";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
 				":email"=>$tab['email'],
+				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
-				":mdp"=>$tab['mdp'],
-				":idTechnicien"=>$tab['idTechnicien']
+				":dateentree"=>$tab['dateentree'],
+				":iduser"=>$tab['iduser']
 			);
 			if ($this->pdo != null){
 				//on prépare la requête

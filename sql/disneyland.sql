@@ -147,6 +147,7 @@ select u.*, c.fidelite, c.dateNaissance, c.promotion from user u, client c where
 
 -- les PROCEDURES STOCKEES --
 delimiter $
+drop procedure if exists insertTechnicien ;
 create procedure insertTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date)
 begin
 	declare p_iduser int (3);
@@ -156,6 +157,22 @@ begin
 	from user
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into technicien values(p_iduser, p_qualification, p_dateentree);
+end $
+
+drop procedure if exists deleteTechnicien ;
+create procedure deleteTechnicien(IN p_iduser int(3))
+begin
+   delete from technicien where iduser = p_iduser;
+    delete from user where iduser = p_iduser;
+end$
+
+drop procedure if exists updateTechnicien  ;
+create procedure updateTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50), IN p_mdp varchar(50),  IN p_tel varchar(50),IN p_role varchar(50), IN p_qualification varchar(50), IN p_dateentree date, IN p_iduser int(3))
+begin 
+   update user set nom = p_nom, prenom = p_prenom, adresse = p_adresse, email = p_email, mdp = p_mdp, tel = p_tel
+   where iduser = p_iduser;
+   update technicien set qualification = p_qualification, dateentree = p_dateentree 
+   where iduser = p_iduser ;
 end $
 delimiter ;
 
@@ -188,6 +205,7 @@ begin
 end$
 delimiter ;
 
+
 delimiter $
 create procedure updateRestaurateur (IN p_nom varchar(50), IN p_prenom varchar(50), IN p_adresse varchar(50), IN p_email varchar(50),
 IN p_mdp varchar(50),  IN p_tel varchar(50), IN p_qualification varchar(50), IN p_anciennete varchar(30), IN p_iduser int(3))
@@ -210,6 +228,7 @@ begin
 	where nom = p_nom and prenom = p_prenom and email = p_email and mdp=p_mdp;
 	insert into client values(p_iduser, p_fidelite, p_dateNaissance, p_promotion);
 end $
+
 delimiter ;
 
 delimiter $
@@ -257,28 +276,30 @@ insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe"
 
 insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride", 2400, "70%", 15, "09:00", "19:00", 1, 2);
 
-insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 4);
+insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 2);
 
 insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
 
 insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 4);
 
-insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00", 2, 4);
+insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00", 2, 3 );
 
 insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00", 2, 2);
 
 insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2);
 
-insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 4);
+
+insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 3 );
 
 
-insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 5);
+insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 5 );
 
-insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, 6);
+insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, 6 );
 
-insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, 7);
+insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, 7 );
 
-insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, 5);
+insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, 5 );
+
 
 
 
