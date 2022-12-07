@@ -89,6 +89,7 @@ CREATE TABLE restaurant(
    affluence enum ("Vide", "10%", "20%", "30%", "40%", "50%", "60", "70%", "80%", "90%", "Pleine"),
    type enum ("Service à Table", "Restauration à Emporter"),
    capacite int(5),
+   url varchar(50),
    iduser int(3) NOT NULL,
    PRIMARY KEY(idRestaurant),
    FOREIGN KEY(iduser) REFERENCES restaurateur(iduser)
@@ -292,13 +293,13 @@ insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux"
 insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 3 );
 
 
-insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, 5 );
+insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, "images/Chez_Remi.png", 5 );
 
-insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, 6 );
+insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio", 7, "30%", "Restauration à Emporter", 0, "images/au_chalet_de_la_marionnette.png", 6 );
 
-insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, 7 );
+insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, "images/en_coulisse.jpeg", 7 );
 
-insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, 5 );
+insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, "images/speciality_ice_cream.jpeg" 5 );
 
 
 
