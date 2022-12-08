@@ -102,6 +102,10 @@
 			return $nbRestaurants;
 		}
 
+		public function selectUrlRestaurant($idRestaurant){
+			return $this->unModele->selectUrlRestaurant($idRestaurant);
+		}
+
 		/********************** RESTAURATEURS ***************************/
 
 		public function insertRestaurateur($tab){

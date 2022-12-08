@@ -27,6 +27,7 @@
 						echo '<th>Opérations</th>';
 				}
 				?>
+				<th>Aperçu</th>
 			</tr>
 		</thead>
 		<?php 
@@ -47,6 +48,8 @@
 					echo "<td><a href='index.php?page=4&action=edit&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/edit.png' height='35' width='35'></a>";
 					echo "<a href='index.php?page=4&action=sup&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
 				}
+				echo "<td><a href='index.php?page=4&action=voir&idRestaurant=".$unRestaurant['idRestaurant']."'><img src='images/voir.png' height='35' width='35'></a></td>";
+
 				echo "</tr>";
 			}
 		?>
@@ -54,4 +57,17 @@
 </div>
 
 <br><br>
-<img src="images/restaurant.jpg" height="513" width="912">
+
+<?php
+	
+
+	if($idRestaurant != null){
+	echo "<img src='".$unRestaurant['url']."' height='513' width='912'>";
+	} else {
+		echo "<img src='images/restaurant.jpg' height='513' width='912'>";
+
+	}
+
+?>
+
+

@@ -213,6 +213,20 @@
 			}
 		}
 
+		public function selectUrlRestaurant($idRestaurant){
+			$requete = "select url from restaurant where idRestaurant = :idRestaurant;";
+			$donnees = array(
+				":idRestaurant"=>$idRestaurant);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Restaurant
+				return $select->fetch();
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){

@@ -1,5 +1,6 @@
 <?php
 	$leRestaurant = null;
+	$urlRestaurant = null;
 	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
 
 	if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
@@ -9,6 +10,7 @@
 			switch ($action){
 				case "sup": $unControleur->deleteRestaurant($idRestaurant); break;
 				case "edit": $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant); break;
+				case "voir": $idRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); break; 
 			}
 		}
 
