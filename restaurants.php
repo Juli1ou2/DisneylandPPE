@@ -24,6 +24,14 @@
 			$unControleur->updateRestaurant($_POST);
 		}
 	}
+	
+	if (isset($_GET['action']) and isset($_GET['idRestaurant'])){
+		$action = $_GET['action'];
+		$idRestaurant = $_GET['idRestaurant'];
+		if ($action == "voir"){
+		$urlRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); 
+		}
+	}
 
 	if (isset($_POST['Rechercher'])){
 		$mot = $_POST['mot'];
