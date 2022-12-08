@@ -59,10 +59,10 @@
 <br><br>
 
 <?php
-	
+
 
 	if($idRestaurant != null){
-	echo "<img src='".$unRestaurant['url']."' height='513' width='912'>";
+	echo "<img src='".$urlRestaurant."' height='513' width='912'>";
 	} else {
 		echo "<img src='images/restaurant.jpg' height='513' width='912'>";
 

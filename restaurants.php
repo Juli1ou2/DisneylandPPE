@@ -1,5 +1,6 @@
 <?php
 	$leRestaurant = null;
+	$idRestaurant = null ;
 	$urlRestaurant = null;
 	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
 
@@ -10,7 +11,7 @@
 			switch ($action){
 				case "sup": $unControleur->deleteRestaurant($idRestaurant); break;
 				case "edit": $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant); break;
-				case "voir": $idRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); break; 
+				case "voir": $urlRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); break; 
 			}
 		}
 

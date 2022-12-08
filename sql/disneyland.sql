@@ -299,7 +299,7 @@ insert into restaurant values (null, "Au Chalet de la Marionnette", "Pinocchio",
 
 insert into restaurant values (null, "Restaurant en coulisse", "Hollywood", 15, "50%", "Service à table", 60, "images/en_coulisse.jpeg", 7 );
 
-insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, "images/speciality_ice_cream.jpeg", 5 );
+insert into restaurant values (null, "Speciality Ice Cream", "Glaces", 7, "70%", "Restauration à Emporter", 0, "images/speciality_ice_cream.jpg", 5 );
 
 
 
