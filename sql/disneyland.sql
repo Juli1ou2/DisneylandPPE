@@ -74,6 +74,7 @@ CREATE TABLE attraction(
    prix int(5),
    heureOuv TIME,
    heureFerm TIME,
+   url varchar(50),
    idParc int(3) NOT NULL,
    iduser int(3) NOT NULL,
    PRIMARY KEY(idAttraction),
@@ -271,26 +272,26 @@ insert into parc values (null, "Parc Walt Disney Studio", 12000, 15, 10);
 insert into user values (null, "admin", "admin", "admin", "admin", "admin", "admin", "admin");
 
 
-insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Big Thunder Moutain", "Ouverte", "Montagne Russe", 2400, "70%", 15, "09:00", "19:00", "images/big_thunder_mountain.jpeg",1, 2);
 
-insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe", 1800, "40%", 20, "09:00", "19:00", 1, 4);
+insert into attraction values(null, "Space Moutain", "Ouverte", "Montagne Russe", 1800, "40%", 20, "09:00", "19:00","images/space_mountain.jpeg", 1, 4);
 
-insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride", 2400, "70%", 15, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "It's a Small World", "Ouverte", "Dark Ride", 2400, "70%", 15, "09:00", "19:00","images/it's_a_small_world.jpeg", 1, 2);
 
-insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Peter Pan", "En Travaux", "Dark Ride", 1500, "Vide", 10, "09:00", "19:00","images/peter_pan.jpeg", 1, 2);
 
-insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00", 1, 2);
+insert into attraction values(null, "Indiana Jones et le temple du peril", "Fermée", "Montagne Russe", 1444, "Vide", 10, "09:00", "19:00","images/indiana_jones.jpeg", 1, 2);
 
-insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00", 1, 4);
+insert into attraction values(null, "Star Tour", "En Travaux", "Simulateur de vol", 1444, "Vide", 10, "09:00", "19:00","images/star_tour.jpeg", 1, 4);
 
-insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00", 2, 3 );
+insert into attraction values (null, "Crush Coaster", "Ouverte", "Montagne Russe", 895, "Pleine", 25, "09:00", "19:00","images/crush_coaster.jpeg", 2, 3 );
 
-insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00", 2, 2);
+insert into attraction values (null, "Ratatouille : L'aventure Totalement Toquée de Remy", "Ouverte", "Dark Ride", 1500, "50%", 15, "09:00", "19:00","images/ratatouille.jpeg", 2, 2);
 
-insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00", 2, 2);
+insert into attraction values (null, "Toy Soldiers Parachute Drop", "En Travaux", "Chute dans le vide", 800, "20%", 5, "09:00", "19:00","images/toy_soldier.jpeg", 2, 2);
 
 
-insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00", 2, 3 );
+insert into attraction values (null, "Tower of Terror", "Ouverte", "Chute dans le vide", 1200, "90%", 25, "09:00", "19:00","images/tower_of_terror.jpeg", 2, 3 );
 
 
 insert into restaurant values (null, "Chez Rémy", "Ratatouille", 25, "40%", "Service à table", 200, "images/Chez_Remi.png", 5 );
@@ -312,4 +313,5 @@ insert into transport values (null, "Interparc", "Navette interne", 150, "40%", 
 select * from vueClients;
 select * from vueTechniciens;
 select * from vueRestaurateurs;
+select * from attraction; 
 

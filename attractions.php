@@ -1,5 +1,7 @@
 <?php
 	$leAttraction = null;
+	$idAttraction = null ;
+	$urlAttraction = null;
 	$lesParcs = $unControleur->selectAllParcs();
 	$lesTechniciens = $unControleur->selectAllTechniciens();
 
@@ -20,6 +22,14 @@
 		}
 		if (isset($_POST['Modifier'])){
 			$unControleur->updateAttraction($_POST);
+		}
+	}
+
+	if (isset($_GET['action']) and isset($_GET['idAttraction'])){
+		$action = $_GET['action'];
+		$idAttraction = $_GET['idAttraction'];
+		if ($action == "voir"){
+		$urlAttraction = $unControleur->selectUrlAttraction($idAttraction); 
 		}
 	}
 

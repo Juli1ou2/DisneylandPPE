@@ -11,7 +11,7 @@
 			switch ($action){
 				case "sup": $unControleur->deleteRestaurant($idRestaurant); break;
 				case "edit": $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant); break;
-				case "voir": $urlRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); break; 
+			
 			}
 		}
 

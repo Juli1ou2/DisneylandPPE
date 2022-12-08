@@ -290,6 +290,10 @@
 			return $nbAttractions;
 		}
 
+		public function selectUrlAttraction($idAttraction){
+			return $this->unModele->selectUrlAttraction($idAttraction);
+		}
+
 		/********************** CLIENTS ***************************/
 
 		public function insertClient($tab){

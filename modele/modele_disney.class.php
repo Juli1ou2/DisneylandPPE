@@ -644,6 +644,20 @@
 			}
 		}
 
+		public function selectUrlAttraction($idAttraction){
+			$requete = "select url from Attraction where idAttraction = :idAttraction;";
+			$donnees = array(
+				":idAttraction"=>$idAttraction);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Restaurant
+				$url = $select->fetch();
+				return $url['url'];
+			} else {
+				return null;
+			}
+		}
 		/****************************** CLIENTS *******************************************/
 
 		public function insertClient($tab){
