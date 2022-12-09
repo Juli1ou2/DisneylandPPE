@@ -4,6 +4,8 @@
 
 <?php
 	$leRestaurant = null;
+	$idRestaurant = null ;
+	$urlRestaurant = null;
 	$lesRestaurateurs = $unControleur->selectAllRestaurateurs();
 
 	if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='restaurateur')){
@@ -13,6 +15,7 @@
 			switch ($action){
 				case "sup": $unControleur->deleteRestaurant($idRestaurant); break;
 				case "edit": $leRestaurant = $unControleur->selectWhereRestaurant($idRestaurant); break;
+			
 			}
 		}
 
@@ -26,6 +29,14 @@
 		}
 		if (isset($_POST['Modifier'])){
 			$unControleur->updateRestaurant($_POST);
+		}
+	}
+	
+	if (isset($_GET['action']) and isset($_GET['idRestaurant'])){
+		$action = $_GET['action'];
+		$idRestaurant = $_GET['idRestaurant'];
+		if ($action == "voir"){
+		$urlRestaurant = $unControleur->selectUrlRestaurant($idRestaurant); 
 		}
 	}
 
