@@ -231,12 +231,12 @@
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
-			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :mail, :mdp, :tel, 'restaurateur', :qualification, :anciennete) ;";
+			$requete = "call insertRestaurateur(:nom, :prenom, :adresse, :email, :mdp, :tel, 'restaurateur', :qualification, :anciennete) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
-				":mail"=>$tab['email'],
+				":email"=>$tab['email'],
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],

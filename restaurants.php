@@ -1,3 +1,7 @@
+<form method="post">
+	<input type="submit" name="ajouter" value="Ajouter">
+</form>
+
 <?php
 	$leRestaurant = null;
 	$idRestaurant = null ;
@@ -15,7 +19,10 @@
 			}
 		}
 
-		require_once("vues/vue_insert_restaurant.php");
+		if (isset($_POST['ajouter'])){
+			require_once("vues/vue_insert_restaurant.php");
+		}
+		
 		if (isset($_POST['Valider'])){
 			$unControleur->insertRestaurant($_POST);
 			header("Location: index.php?page=4");
