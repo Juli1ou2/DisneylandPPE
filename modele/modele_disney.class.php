@@ -115,7 +115,7 @@
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
-			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, :idRestaurateur);";
+			$requete = 'insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, "", :idRestaurateur);';
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -213,6 +213,21 @@
 			}
 		}
 
+		public function selectUrlRestaurant($idRestaurant){
+			$requete = "select url from restaurant where idRestaurant = :idRestaurant;";
+			$donnees = array(
+				":idRestaurant"=>$idRestaurant);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Restaurant
+				$url = $select->fetch();
+				return $url['url'];
+			} else {
+				return null;
+			}
+		}
+
 		/****************************** RESTAURATEURS *******************************************/
 
 		public function insertRestaurateur($tab){
@@ -221,7 +236,7 @@
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
-				":mail"=>$tab['mail'],
+				":mail"=>$tab['email'],
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
@@ -629,6 +644,20 @@
 			}
 		}
 
+		public function selectUrlAttraction($idAttraction){
+			$requete = "select url from Attraction where idAttraction = :idAttraction;";
+			$donnees = array(
+				":idAttraction"=>$idAttraction);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Restaurant
+				$url = $select->fetch();
+				return $url['url'];
+			} else {
+				return null;
+			}
+		}
 		/****************************** CLIENTS *******************************************/
 
 		public function insertClient($tab){

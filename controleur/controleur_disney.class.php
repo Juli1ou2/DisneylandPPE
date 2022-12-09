@@ -102,6 +102,10 @@
 			return $nbRestaurants;
 		}
 
+		public function selectUrlRestaurant($idRestaurant){
+			return $this->unModele->selectUrlRestaurant($idRestaurant);
+		}
+
 		/********************** RESTAURATEURS ***************************/
 
 		public function insertRestaurateur($tab){
@@ -284,6 +288,10 @@
 
 			//on renvoie les Attractions
 			return $nbAttractions;
+		}
+
+		public function selectUrlAttraction($idAttraction){
+			return $this->unModele->selectUrlAttraction($idAttraction);
 		}
 
 		/********************** CLIENTS ***************************/
