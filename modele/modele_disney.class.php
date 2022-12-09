@@ -115,7 +115,7 @@
 		/****************************** RESTAURANTS *******************************************/
 
 		public function insertRestaurant($tab){
-			$requete = "insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, :idRestaurateur);";
+			$requete = 'insert into restaurant values (null, :nom, :theme, :effectifMax, :affluence, :type, :capacite, "", :idRestaurateur);';
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":theme"=>$tab['theme'],
@@ -236,7 +236,7 @@
 				":nom"=>$tab['nom'],
 				":prenom"=>$tab['prenom'],
 				":adresse"=>$tab['adresse'],
-				":mail"=>$tab['mail'],
+				":mail"=>$tab['email'],
 				":mdp"=>$tab['mdp'],
 				":tel"=>$tab['tel'],
 				":qualification"=>$tab['qualification'],
