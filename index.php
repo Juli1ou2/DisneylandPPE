@@ -21,6 +21,15 @@
 <body>
 	<center>
 		<header>
+		<?php
+				if (! isset($_SESSION['email'])){
+					echo '<div id="bouton_connexion"><a href="index.php?page=8">Connexion</a></div>';
+				} else{
+					echo '<div id="bouton_connexion">
+							<a href="index.php?page=10">'.$_SESSION['prenom'].' '.$_SESSION['nom'].', '.$_SESSION['role'].'</a>
+							<a href="index.php?page=8"><img src="images/deconnexion.png" height="22" width="22"></a>
+							</div>';
+				} ?>
 			<div id="en-tete">
 				<div id="titre_menu">
 					<a href="index.php?page=0"><img src="images/logo.png" width="136.5" height="39.5"></a>
@@ -43,13 +52,6 @@
 						echo '<a href="index.php?page=7"><h3>COMMANDES</h3></a>';
 					} ?>
 				</div>
-				<?php
-					if (! isset($_SESSION['email'])){
-						echo '<a href="index.php?page=8"><h4 class="bouton_connexion">Connexion</h4></a>';
-					} else{
-						// echo "<h4 class='bloc_role'>".$_SESSION['role']." : ".$_SESSION['prenom']." ".$_SESSION['nom']."</h4>";
-						echo '<a href="index.php?page=8"><h4 class="bouton_connexion">Déconnexion<br>'.$_SESSION['prenom'].' '.$_SESSION['nom'].', '.$_SESSION['role'].'</h4></a>';
-					} ?>
 			</div>
 		</header>
 
@@ -85,6 +87,7 @@
 					header("Location: index.php?page=8");
 				}
 				case 9 : require_once("vues/vue_mentions_legales.php"); break;
+				case 10: require_once("vues/vue_profile.php");
 			}
 
 			if (isset($_POST['SeConnecter'])){
@@ -95,15 +98,16 @@
 					echo "<p><br><br>VEUILLEZ VERIFIER VOS IDENTIFIANTS !</p>";
 				} else {
 					//Création de la session user
-					$_SESSION['role'] = $unUser['role'];
 					$_SESSION['id'] = $unUser['iduser'];
-					$_SESSION['email'] = $unUser['email'];
 					$_SESSION['nom'] = $unUser['nom'];
 					$_SESSION['prenom'] = $unUser['prenom'];
+					$_SESSION['adresse'] = $unUser['adresse'];
+					$_SESSION['email'] = $unUser['email'];
+					$_SESSION['tel'] = $unUser['tel'];
+					$_SESSION['role'] = $unUser['role'];
 
 					//on recharge la page vers le HOME
 					header("Location: index.php?page=0");
-
 				}
 			}
 			if (isset($_POST['SInscrire'])){

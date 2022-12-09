@@ -43,6 +43,22 @@ body{
 	background-color: #f5f5f5;
 }
 
+#table_profile{
+	border-collapse: collapse;
+	margin: 20px;
+	border:  2px solid black;
+	/* width: fit-content; */
+}
+
+#table_profile td{
+	padding: 8px;
+	border: 2px solid black;
+}
+
+#table_profile td:nth-child(1){
+	font-family: Aileron-Regular-webfont, arial, sans-serif;
+}
+
 #table_affichage{
 	border-collapse: collapse;
 	box-shadow: 0 10px 40px rgba(0,0,0,0.15);
@@ -79,7 +95,7 @@ body{
 	background-color: #f8f8f8;
 	border-radius: 25px;
 	box-shadow: 0 15px 23px rgba(0,0,0,0.15);
-	overflow-block: scroll;
+	/* overflow-block: scroll; */
 }
 
 #grand_bloc{
@@ -127,29 +143,57 @@ header h1{
 	color: #213f8eff;
 }
 
-.bouton_connexion{
+/* .logo_deconnexion {
+	height: 22;
+	width: 22;
+	position: absolute;
+	right: 50px;
+    top: 10px;
+} */
+
+#bouton_connexion{
 	position: absolute;
 	right: 10px;
-    top: 0px;
-	font-size: smaller;
-    z-index: 1;
-	border: 1px solid #213f8eff;
+    top: 10px;
+    /* z-index: 1; */
+	/* border: 1px solid #213f8eff; */
+	border-bottom: 1px solid rgb(141, 141, 141);
+	box-shadow: 0px 2px 7px rgb(141, 141, 141);
 	border-radius: 25px;
-	padding: 10px;
+	padding: 8px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 10%;
+	height: 20px;
+}
+
+/* #bouton_connexion:hover{
+	background-color: #213f8eff;
+	color: white;
+} */
+
+#bouton_connexion a{
+	font-size: smaller;
+	font-family: Aileron-Light-webfont, arial, sans-serif;
+	text-decoration: none;
 	color: black;
 }
 
-.bouton_connexion:hover{
-	border: 2px solid #213f8eff;
+/* #bouton_connexion a:hover{
+	color: white;
+	text-decoration: none;
+	background-color: white;
+} */
+
+#bouton_connexion a:visited{
 	color: black;
+	text-decoration: none;
 }
 
-.bouton_connexion:visited{
+#bouton_connexion a:active{
 	color: black;
-}
-
-.bouton_connexion:active{
-	color: black;
+	text-decoration: none;
 }
 
 #en-tete{
