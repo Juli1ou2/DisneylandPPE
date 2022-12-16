@@ -692,7 +692,7 @@
 		}
 
 		public function selectAllCommandes($idClient){
-			$requete = "select * from commande where idClient = ".$idClient.";";
+			$requete = "select * from commande where iduser = ".$idClient.";";
 			if ($this->pdo != null){
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
