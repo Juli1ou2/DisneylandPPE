@@ -48,6 +48,7 @@
 
 		if (isset($_POST['nouvelleCommande'])){
 			$unControleur->insertCommande($_SESSION['id']);
+			header("Location: index.php?page=7");
 		}
 
 		//Insertion des activités
