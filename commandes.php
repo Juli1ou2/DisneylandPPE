@@ -54,10 +54,17 @@
 		//Insertion des activités
 		require_once("vues/vue_insert_commande.php");
 
+		//PPE -------------------------------------------------------------------------------------------
 		if (isset($_POST['AjouterAttraction'])){
-			$unControleur->insertReserver1($_POST);
-			$unControleur->updatePrixSupCommandeReserver1($_POST);
+			$attractionChoisie = $unControleur->selectWhereAttraction($_POST['idAttraction']);
+			if ($_POST['heure']>=$attractionChoisie['heureOuv'] and $_POST['heure']<=$attractionChoisie['heureFerm']){
+				$unControleur->insertReserver1($_POST);
+				$unControleur->updatePrixSupCommandeReserver1($_POST);
+			} else {
+				echo "<p class='typeStatusFerme'><br>L'horaire choisi ne convient pas !</p>";
+			}
 		}
+		// ----------------------------------------------------------------------------------------------
 
 		if (isset($_POST['AjouterRestaurant'])){
 			$unControleur->insertReserver2($_POST);

@@ -29,4 +29,15 @@
 	}
 
 	require_once("vues/vue_les_parcs.php");
+
+	//PPE ------------------------------------------------------------------------
+	if (isset($_GET['action']) and isset($_GET['idParc'])){
+		$action = $_GET['action'];
+		$idParc = $_GET['idParc'];
+		if ($action == "voir"){
+			$lesAttractionsDuParc = $unControleur->selectAttractionsByParc($idParc); 
+			require_once("vues/vue_les_attractions_parc.php");
+		}
+	}
+	//----------------------------------------------------------------------------
 ?>

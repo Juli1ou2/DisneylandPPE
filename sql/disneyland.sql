@@ -146,6 +146,10 @@ drop view if exists vueClients;
 create view vueClients as (
 select u.*, c.fidelite, c.dateNaissance, c.promotion from user u, client c where u.iduser = c.iduser);
 
+drop view if exists vueParcs;
+create view vueParcs as (
+select p.idParc, p.nom, p.capacite, (select count(a.idAttraction) as nbAttractionsFonctionnelles where a.status='Ouverte'), (select count(a.idAttraction) as nbAttractionsTotales) from parc p, attraction a where a.idParc = p.idParc);
+
 
 -- les PROCEDURES STOCKEES --
 delimiter $
@@ -173,17 +177,9 @@ create procedure updateTechnicien (IN p_nom varchar(50), IN p_prenom varchar(50)
 begin 
    update user set nom = p_nom, prenom = p_prenom, adresse = p_adresse, email = p_email, mdp = p_mdp, tel = p_tel
    where iduser = p_iduser;
-   update technicien set qualification = p_qualification, dateentree = p_dateentree 
+   update technicien set qualification = p_qualification, dateentree = p_dateentree
    where iduser = p_iduser ;
 end $
-delimiter ;
-
-delimiter $
-create procedure deleteTechnicien(IN p_iduser int(3))
-begin
-   delete from technicien where iduser = p_iduser;
-	delete from user where iduser = p_iduser;
-end$
 delimiter ;
 -- ________________________________________________________________________________ --
 delimiter $

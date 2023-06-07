@@ -32,7 +32,8 @@
 				<td>".$unParc['nbAttractionsFonctionnelles']."</td>";
 				if(isset($_SESSION['email']) and ($_SESSION['role']=='admin' or $_SESSION['role']=='technicien')){
 					echo "<td><a href='index.php?page=1&action=edit&idParc=".$unParc['idParc']."'><img src='images/edit.png' height='35' width='35'></a>";
-					echo "<a href='index.php?page=1&action=sup&idParc=".$unParc['idParc']."'><img src='images/sup.jpg' height='35' width='35'></a></td>";
+					echo "<a href='index.php?page=1&action=sup&idParc=".$unParc['idParc']."'><img src='images/sup.jpg' height='35' width='35'></a>
+					<a href='index.php?page=1&action=voir&idParc=".$unParc['idParc']."'><img src='images/voir.png' height='35' width='35'></a></td>";
 				}
 				echo "</tr>";
 			}

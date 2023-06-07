@@ -34,8 +34,17 @@
 			</tr>
 		</thead>
 		<?php 
+			$typeStatus = "";
 			foreach ($lesAttractions as $unAttraction){
-				echo "<tr>
+				if ($unAttraction['status']=='En Travaux'){
+					$typeStatus = "typeStatusEnTravaux";
+				} else if ($unAttraction['status']=='Fermée'){
+					$typeStatus = "typeStatusFerme";
+				} else{
+					$typeStatus = "";
+				}
+
+				echo "<tr class='".$typeStatus."'>
 				<td>".$unAttraction['idAttraction']."</td>
 				<td>".$unAttraction['nom']."</td>
 				<td>".$unAttraction['status']."</td>

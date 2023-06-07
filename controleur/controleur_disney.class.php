@@ -262,6 +262,14 @@
 			return $lesAttractions;
 		}
 
+		public function selectAttractionsByParc($idParc){
+			$lesAttractions = $this->unModele->selectAttractionsByParc($idParc);
+			//s'il y a des traitements à faire
+
+			//on renvoie les Attractions
+			return $lesAttractions;
+		}
+
 		public function deleteAttraction($idAttraction){
 			$this->unModele->deleteAttraction($idAttraction);
 		}

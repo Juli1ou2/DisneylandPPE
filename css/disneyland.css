@@ -35,6 +35,15 @@
 }
 
 
+.typeStatusEnTravaux{
+	color: black;
+	background-color: rgb(255, 208, 0);
+}
+
+.typeStatusFerme{
+	color: white;
+	background-color: red;
+}
 
 body{
 	margin: auto;

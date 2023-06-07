@@ -540,7 +540,7 @@
 		/****************************** ATTRACTIONS *******************************************/
 
 		public function insertAttraction($tab){
-			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien) ;";
+			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, '', :idParc, :idTechnicien) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
@@ -566,6 +566,20 @@
 				$select = $this->pdo->prepare($requete);
 				$select->execute();
 				//extraction de tous les Attractions
+				return $select->fetchAll();
+			} else {
+				return null;
+			}
+		}
+
+		public function selectAttractionsByParc($idParc){
+			$requete = "select * from attraction where idParc = :idParc;";
+			$donnees = array(
+				":idParc"=>$idParc);
+			if ($this->pdo != null){
+				$select = $this->pdo->prepare($requete);
+				$select->execute($donnees);
+				//extraction du Attraction
 				return $select->fetchAll();
 			} else {
 				return null;
