@@ -540,7 +540,7 @@
 		/****************************** ATTRACTIONS *******************************************/
 
 		public function insertAttraction($tab){
-			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, :idParc, :idTechnicien) ;";
+			$requete = "insert into attraction values (null, :nom, :status, :type, :capacite, :affluence, :prix, :heureOuv, :heureFerm, '', :idParc, :idTechnicien) ;";
 			$donnees = array(
 				":nom"=>$tab['nom'],
 				":status"=>$tab['status'],
