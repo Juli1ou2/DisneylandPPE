@@ -101,7 +101,7 @@ CREATE TABLE commande(
    prix int(5),
    iduser int(3) NOT NULL,
    PRIMARY KEY(idCommande),
-   FOREIGN KEY(iduser) REFERENCES client(iduser)
+   FOREIGN KEY(iduser) REFERENCES user(iduser)
 );
 
 CREATE TABLE Reserver1(

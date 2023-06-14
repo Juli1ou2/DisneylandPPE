@@ -2,7 +2,10 @@
 <div id="bloc_recapitulatif">
 	<?php
 		echo '<h2>Récapitulatif commande n°'.$idCommande.'</h2>';
-		echo '<h3>Total : '.$unControleur->selectWhereCommande($idCommande)['prix'].'€</h3';
+		$resultat = $unControleur->selectWhereCommande($idCommande);
+		if (is_array($resultat)){
+			echo '<h3>Total : '.$resultat['prix'].'€</h3';
+		}
 	?>
 	<br>
 	<table id="table_affichage">
